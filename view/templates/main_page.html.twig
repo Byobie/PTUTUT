@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+{{ include("head.html.twig") }}
+{% endblock %}
+	<body>
+{% block header %}
+{% if connexion == 1 %}
+{{ include("header_connected.html.twig") }}
+{% else %}
+{{ include("header.html.twig") }}
+{% endif %}
+{% endblock %}
+{% block nav %}
+{% if connexion == 1 %}
+{{ include("nav_connected.html.twig") }}
+{% else %}
+{{ include("nav.html.twig") }}
+{% endif %}
+{% endblock %}
+		<main>
+			<article class="news">
+					<div>
+						<a href=""><h2>AUTHOR</h2></a>
+						<div>
+							<span>01/01/1900</span>
+							<h4>Politics</h4>
+						</div>
+					</div>
+					<div>
+						<h3>News title</h3>
+					</div>
+					<div>
+						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div>
+						<a href=""><h4>SOURCES</h4></a>
+					</div>
+			</article>
+			<article class="news">
+					<div>
+						<a href=""><h2>AUTHOR</h2></a>
+						<div>
+							<span>01/01/1900</span>
+							<h4>Politics</h4>
+						</div>
+					</div>
+					<div>
+						<h3>News title</h3>
+					</div>
+					<div>
+						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div>
+						<a href=""><h4>SOURCES</h4></a>
+					</div>
+			</article>
+			<article class="news">
+					<div>
+						<a href=""><h2>AUTHOR</h2></a>
+						<div>
+							<span>01/01/1900</span>
+							<h4>Politics</h4>
+						</div>
+					</div>
+					<div>
+						<h3>News title</h3>
+					</div>
+					<div>
+						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div>
+						<a href=""><h4>SOURCES</h4></a>
+					</div>
+			</article>
+			<article class="news">
+					<div>
+						<a href=""><h2>AUTHOR</h2></a>
+						<div>
+							<span>01/01/1900</span>
+							<h4>Politics</h4>
+						</div>
+					</div>
+					<div>
+						<h3>News title</h3>
+					</div>
+					<div>
+						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div>
+						<a href=""><h4>SOURCES</h4></a>
+					</div>
+			</article>
+			<article class="news">
+					<div>
+						<a href=""><h2>AUTHOR</h2></a>
+						<div>
+							<span>01/01/1900</span>
+							<h4>Politics</h4>
+						</div>
+					</div>
+					<div>
+						<h3>News title</h3>
+					</div>
+					<div>
+						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div>
+						<a href=""><h4>SOURCES</h4></a>
+					</div>
+			</article>			
+		</main>
+{% block footer %}
+{{ include("footer.html.twig") }}
+{% endblock %}
+	</body>
+</html>

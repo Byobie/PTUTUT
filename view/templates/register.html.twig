@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+{{ include("head.html.twig") }}
+{% endblock %}
+	<body>
+{% block header %}
+{% if connexion == 1 %}
+{{ include("header_connected.html.twig") }}
+{% else %}
+{{ include("header.html.twig") }}
+{% endif %}
+{% endblock %}
+{% block nav %}
+{% if connexion == 1 %}
+{{ include("nav_connected.html.twig") }}
+{% else %}
+{{ include("nav.html.twig") }}
+{% endif %}
+{% endblock %}
+		<main>
+			<article id="register_desktop">
+				<form method="post" action="../../index.php?theme={{theme}}&page_number=1">
+					<label id="email">EMAIL ADRESS :</label>
+					<input type="text" name="email" id="email" required>
+					<label id="login">LOGIN :</label>
+					<input type="text" name="login" id="login" required>
+					<label id="password">PASSWORD :</label>
+					<input type="text" name="password" id="password" required>
+					<label id="confirmPassword">CONFIRM PASSWORD :</label>
+					<input type="text" name="confirmPassword" id="confirmPassword" required>
+					<input type="submit" name="submit" value="REGISTER">
+					<input type="hidden" name="formSent" value="1">
+					<span style="color: red; text-align: center;">{{registerError}}</span>
+				</form>
+			</article>	
+			<article id="register_tablet_mobile">
+				<form method="post" action="../../index.php?theme={{theme}}&page_number=1">
+					<label id="email">EMAIL ADRESS :</label>
+					<input type="text" name="email" id="email" required>
+					<label id="login">LOGIN :</label>
+					<input type="text" name="login" id="login" required>
+					<label id="password">PASSWORD :</label>
+					<input type="text" name="password" id="password" required>
+					<label id="confirmPassword">CONFIRM PASSWORD :</label>
+					<input type="text" name="confirmPassword" id="confirmPassword" required>
+					<input type="submit" name="submit" value="REGISTER">
+					<input type="hidden" name="formSent" value="1">
+					<span style="color: red; text-align: center;">{{registerError}}</span>
+				</form>
+			</article>		
+		</main>
+{% block footer %}
+{{ include("footer.html.twig") }}
+{% endblock %}
+	</body>
+</html>

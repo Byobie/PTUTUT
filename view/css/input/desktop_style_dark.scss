@@ -1,0 +1,163 @@
+@import "./_fonctions.scss";
+
+html
+{
+	overflow-x: hidden;
+
+	body
+	{
+		width: 100vw;
+		background-color: $themeColorDark2;
+
+		header
+		{
+			@include header_footer(77px, 100%, $themeColorDark1, fixed, 0px, 20);
+
+			#header_box
+			{
+				@include header_box(flex, row, space-between, 16px, 44px, 11px, 44px);
+
+				#logo
+				{
+					@extend %logo;
+				}
+
+				#header_desktop
+				{
+					@extend %header_desktop;
+					
+					div:first-child
+					{
+						@include make_button($buttonColorBlue, 300px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}	
+									
+					div
+					{
+						@include make_button($buttonColorWhite, 150px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+				}
+
+				#header_desktop_connected
+				{
+					@extend %header_desktop;
+					
+					div:first-child
+					{
+						@include make_button($buttonColorBlue, 300px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+
+					div:nth-child(2)
+					{
+						@include make_button($buttonColorGreen, 150px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+					div:last-child
+					{
+						@include make_button($buttonColorRed, 150px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+				}
+
+				#position_tablet_mobile
+				{
+					display: none;
+				}
+			}
+		}
+	}
+
+	nav
+	{
+		@include nav(300px, calc(100vh - 154px), 77px, $themeColorDark2);
+		box-shadow: 10px 0px 15px black;
+
+		#position_desktop
+		{
+			@include position_desktop ($colorFontWhite);
+		}
+
+		#select_theme
+		{
+			@extend %select_theme;
+			width: 256px;
+
+			span
+			{
+				color: $colorFontWhite;
+			}
+		}
+
+		#connexion_tablet_mobile
+		{
+			display: none;
+		}
+
+		#connected_tablet_mobile
+		{
+			display: none;
+		}
+
+		#select_category
+		{
+			@extend %select_category;
+
+			a:last-child
+			{
+				color: $colorFontWhite;
+				border-bottom: $borderWhite;
+			}
+		}
+
+		#infos_tablet_mobile
+		{
+			display: none;
+		}
+	}
+
+	main
+	{
+		@extend %mainDesktop;
+
+		article.news
+		{
+			@include article (22px 44px 22px 44px, 636px, $borderBlack, $themeColorDark3);
+
+			div:first-child
+			{
+				@include first_child (100%, 55px, $themeColorDark1, 11px, $colorFontWhite, 33px, $titleFont, 22px, 33px, $borderWhite, 0px 11px 0px 0px, 0px 22px 0px 11px, block);
+			}
+
+			div:nth-child(2)
+			{
+				@include second_child (100%, 44px, $colorFontWhite, 33px, $titleFont, 6px 0px 0px 22px);
+			}
+
+			div:nth-child(3)
+			{
+				@include third_child ($colorFontWhite, 20px, $textFont, 250px, 4px 22px 22px 22px, 22px 0px 22px 0px, $borderWhite, 250px, 2px 2px 3px black, 0px 0px 22px 22px, normal);
+			}
+
+			div:nth-child(4)
+			{
+				box-shadow: 2px 2px 3px black;
+				@include make_button($buttonColorOrange, 300px, 0px 168px 22px 168px, $itemFont, 33px, $colorFontBlack);
+			}
+		}
+
+		#register_desktop
+		{
+			color: white;
+			@extend %desktop_register_form;
+		}
+
+		#register_tablet_mobile
+		{
+			display: none;
+		}
+	}
+
+	footer
+	{
+		@include header_footer(77px, 100vw, $themeColorDark1, fixed, calc(100vh - 77px), 20);
+		@extend %footerDesktop;
+	}
+}
+

@@ -1,0 +1,441 @@
+//LES VARIABLES SONT IMPORTEES ICI POUR POUVOIR ETRE UTILISEES DANS LES PLACEHOLDERS. DE LA MEME FACON, ELLES SERONT UTILISABLES DANS LES FEUILLES SCSS DIRECTEMENT.
+@import "./_variables.scss";
+
+//FONCTIONS
+@mixin header_footer($height, $width, $backgroundColor, $position, $top, $zIndex) 
+{
+	height: $height;
+	width: $width;
+	background-color: $backgroundColor;
+	position: $position;
+	top: $top;
+	z-index: $zIndex;
+}
+
+@mixin header_box ($display, $flexDirection, $justifyContent, $marginTop, $marginRight, $marginBottom, $marginLeft)
+{
+	display: $display;
+	flex-direction: $flexDirection;
+	justify-content: $justifyContent;
+	margin: $marginTop $marginRight $marginBottom $marginLeft;
+}
+
+@mixin make_button($backgroundColor, $width, $margin, $fontFamily, $fontSize, $color)
+{
+	background-color: $backgroundColor;
+	height: 38px;
+	padding-top: 6px;
+	width: $width;
+	text-align: center;
+	margin: $margin;
+
+	a
+	{
+		font-family: $fontFamily;
+		font-size: $fontSize;
+		font-weight: bold;
+		color: $color;
+		text-decoration: none;
+	}
+}
+
+@mixin nav ($width, $height, $top, $backgroundColor)
+{
+	width: $width;
+	height: $height;
+	top: $top;
+	background-color: $backgroundColor;
+	position: fixed;
+	z-index: 10;
+	overflow-x: hidden;
+}
+
+@mixin position_desktop ($color)
+{
+	height: 44px;
+	width: 256px;
+	margin: 22px 22px 0px 22px;
+	font-family: $titleFont;
+	font-size: 20px;
+	color: $color;
+
+	span 
+	{
+		text-decoration: underline;
+	}
+}
+
+@mixin article ($margin, $width, $border, $theme)
+{
+	margin: $margin;
+	width: $width;
+	z-index: 0;
+	display: flex;
+	flex-direction: column;
+	border: $border;
+	background-color: $theme;
+}
+
+@mixin first_child ($width, $height, $theme, $paddingTop, $colorFont, $fontSize, $fontFamily, $marginLeft, $heightSpan, $border, $paddingSpan, $marginH4, $display)
+{
+	width: $width;
+	height: $height;
+	background-color: $theme;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	a 
+	{
+		padding-top: $paddingTop;
+		color: $colorFont;
+		font-size: $fontSize;
+		font-family: $fontFamily;
+		margin-left: $marginLeft;
+		text-decoration: none;
+	}
+
+	div
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		padding-top: $paddingTop;
+
+		span
+		{
+			display: $display;
+			height: $heightSpan;
+			color: $colorFont;
+			font-size: $fontSize;
+			font-family: $fontFamily;
+			text-decoration: none;	
+			border-right : $border;
+			padding: $paddingSpan;
+		}
+
+		h4
+		{
+			color: $colorFont;
+			font-size: $fontSize;
+			font-family: $fontFamily;
+			margin: $marginH4;
+		}
+	}
+}
+
+@mixin second_child ($width, $height, $color, $fontSize, $fontFamily, $margin)
+{
+	width: $width;
+	height: $height;
+
+	h3
+	{
+		color: $color;
+		font-size: $fontSize;
+		font-family: $fontFamily;
+		margin: $margin;
+	}
+}
+
+@mixin third_child ($color, $fontSize, $fontFamily, $minHeight, $margin, $padding, $border, $img, $boxShadow, $marginImg, $weight)
+{
+	p 
+	{
+		color: $color;
+		font-size: $fontSize;
+		font-family: $fontFamily;
+		min-height: $minHeight;
+		margin: $margin;
+		padding: $padding;
+		border-bottom: $border;
+		border-top: $border;
+		font-weight: $weight;
+					
+		img
+		{
+			width: $img;
+			height: $img;
+			float: right;
+			box-shadow: $boxShadow;
+			margin: $marginImg;
+		}
+	}
+}
+
+
+//PLACEHOLDERS
+%header_desktop
+{
+	display: flex;
+	flex-direction: row;
+}
+
+%logo
+{
+	width: 44px;
+	height: 44px;
+	font-family: $titleFont;
+	font-size: 44px;
+	font-weight: bold;
+
+	a 
+	{
+		text-decoration: none;
+		color: $colorFontWhite;
+	}
+}
+
+%position_tablet_mobile
+{
+	height: 44px;
+	font-family: $titleFont;
+	font-size: 22px;			
+	color: $colorFontWhite;
+	margin-top: 11px;
+
+	span 
+	{
+		text-decoration: underline;
+	}
+}
+
+%select_theme
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 22px;
+	height: 44px;
+
+	span
+	{
+		font-family: $titleFont;
+		font-size: 33px;
+	}
+
+	img
+	{
+		width: 64px;
+		height: 30px;
+		margin: 2px 0px 2px 0px;
+	}
+}
+
+%select_category
+{
+	display: flex;
+	flex-direction: column;
+	margin-top: 22px;
+	margin-bottom: 22px;
+
+	div
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin: 11px 22px 11px 22px;
+
+		a:first-child
+		{
+			img
+			{
+				width: 44px;
+				height: 44px;
+			}
+		}
+
+		a:last-child
+		{
+			display: block;
+			font-family: $titleFont;
+			font-size: 22px;
+			width: 100%;
+			text-decoration: none;
+			margin: 11px 0px 0px 22px;
+		}
+	}
+}
+
+%info_tablet_mobile
+{
+	padding-top: 22px;
+
+	a
+	{
+		display: block;
+		font-size: 22px;
+		height: 22px;
+		margin-bottom: 22px;
+		margin-left: 22px;
+		font-family: $titleFont;
+		text-decoration: none;
+		font-style: italic;
+	}			
+}
+
+%mainDesktop
+{
+	width: calc(100vw - 300px);
+	height: calc(100vh - 154px);
+	margin: 77px 0px 0px 300px;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+%mainTabletMobile
+{
+	width: 100vw;
+	height: calc(100vh - 110px); 
+	margin: 55px 0px 0px 0px;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+%footerDesktop
+{
+	div:first-child
+	{
+		display: none;
+	}
+
+	div:last-child
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		margin: 11px 44px 11px 44px;
+
+		a
+		{
+			color: $colorFontWhite;
+			font-size: 22px;
+			font-family: $titleFont;
+			text-decoration: none;
+			margin-top: 16px;
+		}
+	}
+}
+
+%footerTabletMobile
+{
+	div:first-child
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+
+		div
+		{
+			background-color: $buttonColorBlue;
+			width: 220px;
+			height: 43px;
+			margin: 6px 0px 0px 0px;
+			a
+			{
+				display: block;
+				width: 220px;
+				height: 44px;
+				text-align: center;
+				font-family: $itemFont;
+				font-size: 33px;
+				font-weight: bold;
+				color: $colorFontBlack;
+				text-decoration: none;
+
+				h4
+				{
+					padding-top: 6px;
+				}
+			}
+		}
+
+		img
+		{
+			width: 44px;
+			height: 44px;
+			filter: invert(1);
+			z-index: 30;
+			margin-top: 6px;
+		}
+	}
+
+	div:last-child
+	{
+		display: none;
+	}
+}
+
+%desktop_register_form
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 154px);
+
+
+		input
+		{
+			height: 44px;
+			margin-top: 11px;
+			margin-bottom: 33px;
+			width: 500px;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-left: 100px;
+			width: 300px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			border: none;
+		}
+	}
+}
+
+%tablet_mobile_register_form
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 110px);
+
+
+		input
+		{
+			height: 44px;
+			margin-top: 11px;
+			margin-bottom: 33px;
+			width: 50vw;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc(50vw + 7px);
+			border: none;
+		}
+	}
+}

@@ -1,0 +1,177 @@
+@import "./_fonctions.scss";
+
+html
+{
+	overflow-x: hidden;
+
+	body
+	{
+		width: 100vw;
+		background-color: $themeColorBright2;
+
+		header
+		{
+			@include header_footer(77px, 100%, $themeColorBright1, fixed, 0px, 20);
+
+			#header_box
+			{
+				@include header_box(flex, row, space-between, 16px, 44px, 11px, 44px);
+
+				#logo
+				{
+					@extend %logo;
+				}
+
+				#header_desktop
+				{
+					@extend %header_desktop;
+					
+					div:first-child
+					{
+						@include make_button($buttonColorBlue, 300px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}	
+									
+					div
+					{
+						@include make_button($buttonColorWhite, 150px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+				}
+
+				#header_desktop_connected
+				{
+					@extend %header_desktop;
+					
+					div:first-child
+					{
+						@include make_button($buttonColorBlue, 300px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+
+					div:nth-child(2)
+					{
+						@include make_button($buttonColorGreen, 150px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+					div:last-child
+					{
+						@include make_button($buttonColorRed, 150px, 0px 0px 0px 11px, $itemFont, 33px, $colorFontBlack);
+					}
+				}
+
+				#position_tablet_mobile
+				{
+					display: none;
+				}
+			}
+		}
+	}
+
+	nav
+	{
+		@include nav(300px, calc(100vh - 154px), 77px, $themeColorBright2);
+		box-shadow: 10px 0px 15px black;
+
+		#position_desktop
+		{
+			@include position_desktop ($colorFontBlack);
+		}
+
+		#select_theme
+		{
+			@extend %select_theme;
+			width: 256px;
+
+			span
+			{
+				color: $colorFontBlack;
+			}
+
+			img
+			{
+				filter: invert(1);
+				transform: rotate(180deg);
+			}
+		}
+
+		#connexion_tablet_mobile
+		{
+			display: none;
+		}
+
+		#connected_tablet_mobile
+		{
+			display: none;
+		}
+		
+		#select_category
+		{
+			@extend %select_category;
+
+			a:first-child
+			{
+				img
+				{
+					filter: invert(1);
+				}
+			}
+
+			a:last-child
+			{
+				color: $colorFontBlack;
+				border-bottom: $borderBlack;
+			}
+		}
+
+		#infos_tablet_mobile
+		{
+			display: none;
+		}
+
+		#register_tablet_mobile
+		{
+			display: none;
+		}
+	}
+
+	main
+	{
+		@extend %mainDesktop;
+
+		article.news
+		{
+			@include article (22px 44px 22px 44px, 636px, $borderBlack, $themeColorBright3);
+
+			div:first-child
+			{
+				@include first_child (100%, 55px, $themeColorBright1, 11px, $colorFontWhite, 33px, $titleFont, 22px, 33px, $borderWhite, 0px 11px 0px 0px, 0px 22px 0px 11px, block);
+			}
+
+			div:nth-child(2)
+			{
+				@include second_child (100%, 44px, $colorFontBlack, 33px, $titleFont, 6px 0px 0px 22px);
+			}
+
+			div:nth-child(3)
+			{
+				@include third_child ($colorFontBlack, 20px, $textFont, 250px, 4px 22px 22px 22px, 22px 0px 22px 0px, $borderBlack, 250px, 2px 2px 3px black, 0px 0px 22px 22px, bold);
+			}
+
+			div:nth-child(4)
+			{
+				box-shadow: 2px 2px 3px black;
+				@include make_button($buttonColorOrange, 300px, 0px 168px 22px 168px, $itemFont, 33px, $colorFontBlack);
+			}
+		}
+
+		#register_desktop
+		{
+			color: black;
+			@extend %desktop_register_form;
+		}
+	}
+
+	footer
+	{
+		@include header_footer(77px, 100vw, $themeColorDark1, fixed, calc(100vh - 77px), 20);
+		@extend %footerDesktop;
+	}
+}
+
