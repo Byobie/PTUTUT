@@ -15,6 +15,7 @@ $(document).ready(function(){
 	{
 		$("nav").css({"display": "block"});
 		$("#register_tablet_mobile").css({"margin-left": "264px"});		
+		$("#connexion_form_tablet_mobile").css({"margin-left": "264px"});	
 		closeMenu();
 	}
 
@@ -22,6 +23,7 @@ $(document).ready(function(){
 	{
 		$("nav").css({"display": "none"});
 		$("#register_tablet_mobile").css({"margin-left": "0px"});	
+		$("#connexion_form_tablet_mobile").css({"margin-left": "0px"});	
 		openMenu();
 	}
 

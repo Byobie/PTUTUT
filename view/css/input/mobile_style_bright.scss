@@ -163,6 +163,17 @@ html
 			color: black;
 			@extend %tablet_mobile_register_form;
 		}
+
+		#connexion_form_desktop
+		{
+			display: none;
+		}
+
+		#connexion_form_tablet_mobile
+		{
+			color: black;
+			@extend %tablet_mobile_register_form;
+		}
 	}
 
 	footer

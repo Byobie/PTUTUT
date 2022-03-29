@@ -152,6 +152,17 @@ html
 		{
 			display: none;
 		}
+
+		#connexion_form_desktop
+		{
+			color: white;
+			@extend %desktop_connexion_form;
+		}		
+
+		#connexion_form_tablet_mobile
+		{
+			display: none;
+		}
 	}
 
 	footer

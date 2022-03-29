@@ -23,7 +23,7 @@
 		$theme = "dark";
 	}
 
-	if(isset($_SESSION["registerError"]))
+	if(isset($_SESSION["connexionError"]))
 	{
 		$registerError = $_SESSION["registerError"];
 	}
@@ -34,6 +34,6 @@
 
 	$position = $_SESSION["position"];
 
-    echo $twig->render("register.html.twig", array('site' => $table, 'theme' => $theme, "connexion" => $connexion, "registerError" => $registerError, "position" => $position));
+    echo $twig->render("connexion.html.twig", array('site' => $table, 'theme' => $theme, "connexion" => $connexion, "registerError" => $registerError, "position" => $position));
 
 ?>
