@@ -1,17 +1,14 @@
 <?php 
 	//INCLUDE THE OBJECT CLASSES NECESSARY FOR THE CONTROLLER TO WORK.
-	require("./controller/class/register.class.php");
+	require("./controller/class/registerVerify.class.php");
 	require("./model/class/makeDataBase.class.php");
-	require("./model/class/user.class.php");
+	require("./controller/class/connexionVerify.class.php");
 
 	//STARTING THE SESSION AT THE ROOT.
 	session_start();
 
 	//I PUT THE RESET OF THE ERROR MESSAGE FOR REGISTER FORM BECAUSE IT NEEDS TO BE CLEANED AT EVERY TRY AND WHEN THE REGISTER IS SUCESSFULL TOO.
 	$_SESSION["registerError"] = "";
-
-
-
 
 	//HERE BEGINS THE CONTROLER SWITCH. IT REQUIRES THE PAGE NUMBER TO REDIRECT THE USER. EACH PAGE HAVE A SPECIFIC AND STATIC PAGE NUMBER. IF THERE IS NO PAGE NUMBER PROVIDED BY THE PARAMETER GET, THE USER IS REDIRECTED TO THE MAIN PAGE. I CHOOSED GET PARAMETER BECAUSE IT'S NOT SENSIBLE DATAS.
 	if(isset($_GET["page_number"]) && $_GET["page_number"] >= 0)
@@ -43,22 +40,20 @@
 					if(isset($_POST["formSent"]) && $_POST["formSent"] == 1)
 					{
 						//THE PURPOSE OF REGISTER CLASS IS TO VERIFY DATAS AND TO RETURN TRUE AS RESULT IF ALL IS GOOD OR AN ERROR MESSAGE IF IT IS NOT.
-						$registerCheck = new register($database->getDatabase());
+						$registerCheck = new registerVerify($database->getDatabase());
 						$check = $registerCheck->checkRegister($_POST["login"], $_POST["password"], $_POST["confirmPassword"], $_POST["email"]);
 
 						//THE RESULT MUST BE A BOOLEAN TRUE.
 						if($check === true)
 						{
-							//I CREATE A NEW USER, WHICH IT INSERTED INTO THE DATABASE. PASSWORD IS ENCRYPTED, EVENTUAL BLANK SPACES ARE TRIMMED.
-							$user = new user($database->getDatabase());
-							$user->createUser($_POST["password"], $_POST["login"], $_POST["email"]);
-
-							//THE USER IS NOW CONNECTED. MESSAGE ERROR IS RESET. POSITION IS UPDATED AS THE USER IS REDIRECTES TO THE MAIN PAGE.
+							$_SESSION["createLogin"] = $_POST["login"];
+							$_SESSION["createPassword"] = $_POST["password"];
+							$_SESSION["createEmail"] = $_POST["email"];	
+							$_SESSION["theme"] = $theme;
 							$_SESSION["connexion"] = true;
 							$_SESSION["registerError"] == "";
-							$_SESSION["position"] = "FRESH";								
-
-							header('Location: ./controller/pages/main_page.php?theme='.$theme);
+				
+							header('Location: ./model/create_user.php?theme='.$theme);
 							exit;
 						}
 						else
@@ -82,9 +77,10 @@
 				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true)
 				{
 					//THE SESSION IS UNSET THET DESTROYED TO UNSURE A FULL DELETION. THEN THE USER IS REDIRECTED TO MAIN PAGE.
+					$_SESSION["connexion"] = false;
 					session_unset();
 					session_destroy();
-					header('Location: ./index.php?theme='.$theme);
+					header('Location: ./index.php?theme='.$theme.'&page_number=0');
 					exit;
 				}
 				else
@@ -97,25 +93,30 @@
 
 				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true)
 				{
+					$_SESSION["registerError"] == "";
+					$_SESSION["position"] = "FRESH";								
+
+					header('Location: ./controller/pages/main_page.php?theme='.$theme);
+					exit;
 
 				}
 				else
 				{
-					/*//THE PURPOSE OF REGISTER CLASS IS TO VERIFY DATAS AND TO RETURN TRUE AS RESULT IF ALL IS GOOD OR AN ERROR MESSAGE IF IT IS NOT.
-					$connexionCheck = new connexion($database->getDatabase());
-					$connexion = $registerCheck->checkRegister($_POST["login"], $_POST["password"], $_POST["confirmPassword"], $_POST["email"]);
+					$_SESSION["position"] = "SIGN IN";
+
+					if(isset($_POST["formSent"]) && $_POST["formSent"] == 2)
+					{
+						//THE PURPOSE OF CONNEXION CLASS IS TO VERIFY DATAS AND TO RETURN TRUE AS RESULT IF ALL IS GOOD OR AN ERROR MESSAGE IF IT IS NOT.
+						$connexionCheck = new connexionVerify($database->getDatabase());
+						$connexion = $connexionCheck->checkConnexion($_POST["password"], $_POST["login"]);
 
 						//THE RESULT MUST BE A BOOLEAN TRUE.
-						if($check === true)
+						if($connexion === true)
 						{
-							//I CREATE A NEW USER, WHICH IT INSERTED INTO THE DATABASE. PASSWORD IS ENCRYPTED, EVENTUAL BLANK SPACES ARE TRIMMED.
-							$user = new user($database->getDatabase());
-							$user->createUser($_POST["password"], $_POST["login"], $_POST["email"]);
-
 							//THE USER IS NOW CONNECTED. MESSAGE ERROR IS RESET. POSITION IS UPDATED AS THE USER IS REDIRECTES TO THE MAIN PAGE.
 							$_SESSION["connexion"] = true;
-							$_SESSION["registerError"] == "";
-							$_SESSION["position"] = "FRESH";								
+							$_SESSION["connexionError"] = "";
+							$_SESSION["position"] = "FRESH";							
 
 							header('Location: ./controller/pages/main_page.php?theme='.$theme.'&page_number=0');
 							exit;
@@ -123,21 +124,21 @@
 						else
 						{
 							//THE SESSION VARIABLE RETURN THE RIGHT ERROR MESSAGE. THE USER IS REDIRECTED TO THE REGISTER FORM.
-							$_SESSION["registerError"] = $check;
-							header('Location: ./controller/pages/register.php?theme='.$theme.'&page_number=1');
+							$_SESSION["position"] = "SIGN IN";
+							$_SESSION["connexionError"] = $connexion;
+
+							header('Location: ./controller/pages/connexion.php?theme='.$theme);
 							exit;
 						}
 					}
 					else
 					{
-						header('Location: ./controller/pages/register.php?theme='.$theme.'&page_number=1');
-						exit;					
-					}*/
-					$_SESSION["position"] = "SIGN IN";
-					header('Location: ./controller/pages/connexion.php?theme='.$theme);
-					exit;
+						$_SESSION["position"] = "SIGN IN";
+						$_SESSION["connexionError"] = "";
+						header('Location: ./controller/pages/connexion.php?theme='.$theme);
+						exit;
+					}
 				}
-
 
 		    default:
 

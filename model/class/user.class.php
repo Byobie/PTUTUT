@@ -11,7 +11,6 @@
 
 		public function createUser ($password, $login, $email)
 		{
-
 			$passwordHash = password_hash($password, PASSWORD_DEFAULT);
 			$loginTrimmed = trim($login);
 			$emailTrimmed = trim($email);
@@ -22,7 +21,6 @@
 			$query->bindParam(":password", $passwordHash);
 			$query->bindParam(":email", $emailTrimmed);
 			$query->execute();
-
 		}
 	}
 

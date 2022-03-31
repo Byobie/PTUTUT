@@ -32,6 +32,16 @@
 		$registerError = "";
 	}
 
+	
+	if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] == true)
+	{
+		$connexion = 1;
+	}
+	else
+	{
+		$connexion = 0;
+	}
+
 	$position = $_SESSION["position"];
 
     echo $twig->render("register.html.twig", array('site' => $table, 'theme' => $theme, "connexion" => $connexion, "registerError" => $registerError, "position" => $position));

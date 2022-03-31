@@ -25,15 +25,24 @@
 
 	if(isset($_SESSION["connexionError"]))
 	{
-		$registerError = $_SESSION["registerError"];
+		$connexionError = $_SESSION["connexionError"];
 	}
 	else
 	{
-		$registerError = "";
+		$connexionError = "";
+	}
+
+	if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] == true)
+	{
+		$connexion = 1;
+	}
+	else
+	{
+		$connexion = 0;
 	}
 
 	$position = $_SESSION["position"];
 
-    echo $twig->render("connexion.html.twig", array('site' => $table, 'theme' => $theme, "connexion" => $connexion, "registerError" => $registerError, "position" => $position));
+    echo $twig->render("connexion.html.twig", array('site' => $table, 'theme' => $theme, "connexion" => $connexion, "connexionError" => $connexionError, "position" => $position));
 
 ?>

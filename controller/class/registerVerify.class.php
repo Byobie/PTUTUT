@@ -1,6 +1,6 @@
 <?php 
 
-	class register
+	class registerVerify
 	{
 		private $database;
 
