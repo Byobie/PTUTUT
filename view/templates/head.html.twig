@@ -8,4 +8,5 @@
 		<link id="mobile" rel="stylesheet" media="screen and (max-width: 589px)" type="text/css" href="{% if theme == 'dark' %} ../../view/css/output/mobile_style_dark.css {% else %} ../../view/css/output/mobile_style_bright.css {% endif %}">
 		<script type="text/javascript" src="../../view/js/jquery.js"></script> 
 		<script type="text/javascript" src="../../view/js/script.js"></script> 
+		{% if publishPage == true %}<script type="text/javascript" src="../../view/js/scriptPublish.js"></script> {% endif %}
 	</head>

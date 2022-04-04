@@ -177,6 +177,12 @@ html
 		{
 			display: none;
 		}	
+
+		#publish
+		{
+			color: black;
+			@extend %desktop_publish_form;
+		}
 	}
 
 	footer

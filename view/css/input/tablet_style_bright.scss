@@ -175,6 +175,12 @@ html
 			color: black;
 			@extend %tablet_mobile_register_form;
 		}
+
+		#publish
+		{
+			color: black;
+			@extend %tablet_publish_form;
+		}
 	}
 	
 	footer

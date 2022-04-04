@@ -16,6 +16,7 @@ $(document).ready(function(){
 		$("nav").css({"display": "block"});
 		$("#register_tablet_mobile").css({"margin-left": "264px"});		
 		$("#connexion_form_tablet_mobile").css({"margin-left": "264px"});	
+		$("#publish").css({"margin-left": "264px"});	
 		closeMenu();
 	}
 
@@ -24,6 +25,7 @@ $(document).ready(function(){
 		$("nav").css({"display": "none"});
 		$("#register_tablet_mobile").css({"margin-left": "0px"});	
 		$("#connexion_form_tablet_mobile").css({"margin-left": "0px"});	
+		$("#publish").css({"margin-left": "0px"});	
 		openMenu();
 	}
 
@@ -137,6 +139,9 @@ let resizeNav = 0;
 	  {
 	  	showNav();
 	  	resizeNav = 1
+	  	$("#register_tablet_mobile").css({"margin-left": "0px"});	
+		$("#connexion_form_tablet_mobile").css({"margin-left": "0px"});	
+		$("#publish").css({"margin-left": "0px"});	
 	  }
 	});
 

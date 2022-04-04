@@ -163,6 +163,12 @@ html
 		{
 			display: none;
 		}
+
+		#publish
+		{
+			color: white;
+			@extend %desktop_publish_form;
+		}
 	}
 
 	footer

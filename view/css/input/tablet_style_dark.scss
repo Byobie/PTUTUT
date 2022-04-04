@@ -161,6 +161,12 @@ html
 			color: white;
 			@extend %tablet_mobile_register_form;
 		}
+
+		#publish
+		{
+			color: white;
+			@extend %tablet_publish_form;
+		}
 	}
 	
 	footer

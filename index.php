@@ -3,6 +3,7 @@
 	require("./controller/class/registerVerify.class.php");
 	require("./model/class/makeDataBase.class.php");
 	require("./controller/class/connexionVerify.class.php");
+	require("./controller/class/publishVerify.class.php");
 
 	//STARTING THE SESSION AT THE ROOT.
 	session_start();
@@ -20,7 +21,7 @@
 		$page_number = $_GET["page_number"];
 		$theme = $_GET["theme"];
 
-		switch ($page_number) 
+		switch ($page_number)
 		{
 			//THE PAGE NUMBER ONE IS FOR REGISTER FORM.
 			case 1:
@@ -52,6 +53,7 @@
 							$_SESSION["theme"] = $theme;
 							$_SESSION["connexion"] = true;
 							$_SESSION["registerError"] == "";
+							unset($_SESSION["registerError"]);
 				
 							header('Location: ./model/create_user.php?theme='.$theme);
 							exit;
@@ -94,6 +96,7 @@
 				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true)
 				{
 					$_SESSION["registerError"] == "";
+					unset($_SESSION["registerError"]);
 					$_SESSION["position"] = "FRESH";								
 
 					header('Location: ./controller/pages/main_page.php?theme='.$theme);
@@ -113,13 +116,27 @@
 						//THE RESULT MUST BE A BOOLEAN TRUE.
 						if($connexion === true)
 						{
-							//THE USER IS NOW CONNECTED. MESSAGE ERROR IS RESET. POSITION IS UPDATED AS THE USER IS REDIRECTES TO THE MAIN PAGE.
-							$_SESSION["connexion"] = true;
-							$_SESSION["connexionError"] = "";
-							$_SESSION["position"] = "FRESH";							
+							if(isset($_SESSION["publishShortcut"]) && $_SESSION["publishShortcut"] === true)
+							{
+								$_SESSION["connexion"] = true;
+								$_SESSION["connexionError"] = "";
+								unset($_SESSION["connexionError"]);
+								$_SESSION["position"] = "PUBLISH";							
 
-							header('Location: ./controller/pages/main_page.php?theme='.$theme.'&page_number=0');
-							exit;
+								header('Location: ./controller/pages/publish.php?theme='.$theme);
+								exit;
+							}
+							else
+							{
+								//THE USER IS NOW CONNECTED. MESSAGE ERROR IS RESET. POSITION IS UPDATED AS THE USER IS REDIRECTES TO THE MAIN PAGE.
+								$_SESSION["connexion"] = true;
+								$_SESSION["connexionError"] = "";
+								unset($_SESSION["connexionError"]);
+								$_SESSION["position"] = "FRESH";							
+
+								header('Location: ./controller/pages/main_page.php?theme='.$theme);
+								exit;
+							}
 						}
 						else
 						{
@@ -135,10 +152,64 @@
 					{
 						$_SESSION["position"] = "SIGN IN";
 						$_SESSION["connexionError"] = "";
+						unset($_SESSION["connexionError"]);
 						header('Location: ./controller/pages/connexion.php?theme='.$theme);
 						exit;
 					}
 				}
+
+			case 4:
+
+				$_SESSION["publishError"] = "";
+				unset($_SESSION["publishError"]);
+				$_SESSION["newsTitle"] = "";
+				unset($_SESSION["newsTitle"]);
+				$_SESSION["newsContent"] = "";
+				unset($_SESSION["newsContent"]);
+
+				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true)
+				{
+					$_SESSION["position"] = "PUBLISH";
+
+					if(isset($_POST["formSent"]) && $_POST["formSent"] == 3)
+					{
+						$publishCheck = new publishVerify($database->getDatabase());
+						$publish = $publishCheck->checkStepOne($_POST["title"], $_POST["content"]);
+
+						$_SESSION["newsTitle"] = $_POST["title"];
+						$_SESSION["newsContent"] = $_POST["content"];
+
+						if($publish === true)
+						{
+							$_SESSION["publishError"] = "";
+							unset($_SESSION["publishError"]);
+							$_SESSION["publishController"] = 1;
+							header('Location: ./controller/pages/publish.php?theme='.$theme);
+							exit;	
+						}
+						else
+						{
+							$_SESSION["publishError"] = $publish;
+							header('Location: ./controller/pages/publish.php?theme='.$theme);
+							exit;	
+						}
+					}
+					else
+					{
+						header('Location: ./controller/pages/publish.php?theme='.$theme);
+						exit;
+					}
+				}
+				else
+				{
+					$_SESSION["position"] = "SIGN IN";
+					$_SESSION["connexionError"] = "";
+					unset($_SESSION["connexionError"]);
+					$_SESSION["publishShortcut"] = true;
+					header('Location: ./controller/pages/connexion.php?theme='.$theme);
+					exit;
+				}
+		   	 	
 
 		    default:
 
