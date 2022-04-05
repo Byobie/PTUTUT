@@ -4,6 +4,7 @@
 	require("./model/class/makeDataBase.class.php");
 	require("./controller/class/connexionVerify.class.php");
 	require("./controller/class/publishVerify.class.php");
+	require("./controller/class/imageVerify.class.php");
 
 	//STARTING THE SESSION AT THE ROOT.
 	session_start();
@@ -52,10 +53,9 @@
 							$_SESSION["createEmail"] = $_POST["email"];	
 							$_SESSION["theme"] = $theme;
 							$_SESSION["connexion"] = true;
-							$_SESSION["registerError"] == "";
 							unset($_SESSION["registerError"]);
 				
-							header('Location: ./model/create_user.php?theme='.$theme);
+							header('Location: ./model/script/create_user.php?theme='.$theme);
 							exit;
 						}
 						else
@@ -95,7 +95,6 @@
 
 				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true)
 				{
-					$_SESSION["registerError"] == "";
 					unset($_SESSION["registerError"]);
 					$_SESSION["position"] = "FRESH";								
 
@@ -119,7 +118,6 @@
 							if(isset($_SESSION["publishShortcut"]) && $_SESSION["publishShortcut"] === true)
 							{
 								$_SESSION["connexion"] = true;
-								$_SESSION["connexionError"] = "";
 								unset($_SESSION["connexionError"]);
 								$_SESSION["position"] = "PUBLISH";							
 
@@ -130,7 +128,6 @@
 							{
 								//THE USER IS NOW CONNECTED. MESSAGE ERROR IS RESET. POSITION IS UPDATED AS THE USER IS REDIRECTES TO THE MAIN PAGE.
 								$_SESSION["connexion"] = true;
-								$_SESSION["connexionError"] = "";
 								unset($_SESSION["connexionError"]);
 								$_SESSION["position"] = "FRESH";							
 
@@ -151,7 +148,6 @@
 					else
 					{
 						$_SESSION["position"] = "SIGN IN";
-						$_SESSION["connexionError"] = "";
 						unset($_SESSION["connexionError"]);
 						header('Location: ./controller/pages/connexion.php?theme='.$theme);
 						exit;
@@ -160,11 +156,8 @@
 
 			case 4:
 
-				$_SESSION["publishError"] = "";
 				unset($_SESSION["publishError"]);
-				$_SESSION["newsTitle"] = "";
 				unset($_SESSION["newsTitle"]);
-				$_SESSION["newsContent"] = "";
 				unset($_SESSION["newsContent"]);
 
 				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true)
@@ -183,8 +176,8 @@
 						{
 							$_SESSION["publishError"] = "";
 							unset($_SESSION["publishError"]);
-							$_SESSION["publishController"] = 1;
-							header('Location: ./controller/pages/publish.php?theme='.$theme);
+							$_SESSION["publishController"] = true;
+							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
 							exit;	
 						}
 						else
@@ -203,13 +196,65 @@
 				else
 				{
 					$_SESSION["position"] = "SIGN IN";
-					$_SESSION["connexionError"] = "";
 					unset($_SESSION["connexionError"]);
 					$_SESSION["publishShortcut"] = true;
 					header('Location: ./controller/pages/connexion.php?theme='.$theme);
 					exit;
 				}
 		   	 	
+			case 5:
+
+				unset($_SESSION["imageError"]);
+
+				if(isset($_POST["formSent"]))
+				{
+					$_SESSION["formSentImage"] = $_POST["formSent"];
+				}
+
+				if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] === true && $_SESSION["publishController"] && $_SESSION["publishController"] === true)
+				{
+					$_SESSION["position"] = "PUBLISH";
+
+					if(isset($_SESSION["formSentImage"]) && $_SESSION["formSentImage"] == 4)
+					{
+						$imageCheck = new imageVerify("./model/uploads/", $_FILES["fileToUpload"]);
+						$image = $imageCheck->checkImage($_POST["submit"], $_FILES["fileToUpload"]);
+
+						if($image === true && !isset($_SESSION["imageUploadSuccess"]))
+						{
+							$test = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "./model/uploads/".$_FILES["fileToUpload"]["name"]);
+							$_SESSION["imageUploadSuccess"] = true;
+							$_SESSION["validationImage"] = "Your image has been uploaded.";
+							$_SESSION["name"] = $_FILES["fileToUpload"]["name"];
+							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
+							exit;
+						}
+						elseif (isset($_SESSION["imageUploadSuccess"]) && $_SESSION["imageUploadSuccess"] === true)
+						{
+							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
+							exit;	
+						}
+						else
+						{
+							$_SESSION["imageError"] = $image;
+							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
+							exit;	
+						}
+					}
+					else
+					{
+						header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
+						exit;
+					}
+				}
+				else
+				{
+					$_SESSION["position"] = "SIGN IN";
+					unset($_SESSION["connexionError"]);
+					$_SESSION["publishShortcut"] = true;
+					header('Location: ./controller/pages/connexion.php?theme='.$theme);
+					exit;
+				}
 
 		    default:
 

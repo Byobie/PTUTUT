@@ -1,7 +1,7 @@
 <?php 
 
-	require("./class/makeDataBase.class.php");
-	require("./class/user.class.php");
+	require("../class/makeDataBase.class.php");
+	require("../class/user.class.php");
 
 	session_start();
 

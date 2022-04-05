@@ -640,3 +640,58 @@
 		}
 	}
 }
+
+%desktop_publish_step_two
+{
+	h3
+	{
+		font-family: "economica";
+		font-size: 24px;
+		text-align: center;
+		margin-bottom: 2em;
+	}
+
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 154px);
+
+		input
+		{
+			height: 44px;
+			margin-top: 11px;
+			width: 500px;
+			border: solid black 2px;
+		}
+
+		span
+		{
+			margin-bottom: 33px;
+			align-self: flex-end;
+		}
+
+		textarea
+		{
+			height: 176px;
+			margin-top: 11px;
+			width: 500px;	
+			border: solid black 2px;		
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-left: 100px;
+			width: 300px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			border: none;
+		}
+	}
+}
