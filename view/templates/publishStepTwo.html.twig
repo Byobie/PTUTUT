@@ -5,48 +5,33 @@
 {% endblock %}
 	<body>
 {% block header %}
-{% if connexion == 1 %}
+{% if connexionStatut is same as(true) %}
 {{ include("header_connected.html.twig") }}
 {% else %}
 {{ include("header.html.twig") }}
 {% endif %}
 {% endblock %}
 {% block nav %}
-{% if connexion == 1 %}
+{% if connexionStatut is same as(true) %}
 {{ include("nav_connected.html.twig") }}
 {% else %}
 {{ include("nav.html.twig") }}
 {% endif %}
 {% endblock %}
 		<main>
-{% if imageUploadSuccess != true %}
-			<article id="publish_step_two">
-				<span style="color: red; text-align: center; margin-top: 33px;">{{imageError}}</span>
-				<span style="color: red; text-align: center; margin-top: 33px;">{{validationImage}}</span>
-				<form action="../../index.php?theme={{theme}}&page_number=5" method="post" enctype="multipart/form-data">
-					<label id=fileToUpload>Select image to upload :</label>
-					<input type="file" name="fileToUpload" id="fileToUpload">
-					<input type="submit" value="Upload Image" name="submit">
+			<article id="publishFormTwo">
+				<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=5" method="post" enctype="multipart/form-data">
+					<span style="color: {% if imagePublishSuccess is same as(true) %}green{% else %}red{% endif %}; align-self: center;">{% if imagePublishSuccess is same as(true) %}{{imagePublishMessage}}{% else %}{{imagePublishError}}{% endif %}</span>	
+					<label id=fileToUpload>[OPTIONNAL] Add an image :</label>
+					<input type="file" name="fileToUpload" id="fileToUpload" value="CHOOSE A FILE">
+					<input type="submit" value="NEXT" name="submit">
 					<input type="hidden" name="formSent" value="4">
+					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=4">GO BACK</a>
 				</form>
-				<a href="../../index.php?theme={{theme}}&page_number=4">GO BACK</a>				
-			</article>	
-{% else %}
 
-			<article id="publish_step_two">
-				<img src="../../model/uploads/{{name}}">
-				<span style="color: red; text-align: center; margin-top: 33px;">{{imageError}}</span>
-				<span style="color: red; text-align: center; margin-top: 33px;">{{validationImage}}</span>
-				<form action="../../index.php?theme={{theme}}&page_number=5" method="post" enctype="multipart/form-data">
-					<label id=fileToUpload>Select image to upload :</label>
-					<input type="file" name="fileToUpload" id="fileToUpload">
-					<input type="submit" value="Upload Image" name="submit">
-					<input type="hidden" name="formSent" value="4">
-				</form>
-				<a href="../../index.php?theme={{theme}}&page_number=4">GO BACK</a>				
-			</article>	
 
-{% endif %}
+			
+			</article>	
 		</main>	
 {% block footer %}
 {{ include("footer.html.twig") }}

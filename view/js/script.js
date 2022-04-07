@@ -14,18 +14,20 @@ $(document).ready(function(){
 	function showNav()
 	{
 		$("nav").css({"display": "block"});
-		$("#register_tablet_mobile").css({"margin-left": "264px"});		
-		$("#connexion_form_tablet_mobile").css({"margin-left": "264px"});	
-		$("#publish").css({"margin-left": "264px"});	
+		$("#registeForm").css({"margin-left": "264px"});		
+		$("#connexionForm").css({"margin-left": "264px"});	
+		$("#publishForm").css({"margin-left": "264px"});	
+		$("#publishFormTwo").css({"margin-left": "264px"});
 		closeMenu();
 	}
 
 	function hideNav()
 	{
 		$("nav").css({"display": "none"});
-		$("#register_tablet_mobile").css({"margin-left": "0px"});	
-		$("#connexion_form_tablet_mobile").css({"margin-left": "0px"});	
-		$("#publish").css({"margin-left": "0px"});	
+		$("#registerForm").css({"margin-left": "0px"});	
+		$("#connexionForm").css({"margin-left": "0px"});	
+		$("#publishForm").css({"margin-left": "0px"});
+		$("#publishFormTwo").css({"margin-left": "0px"});	
 		openMenu();
 	}
 
@@ -104,10 +106,10 @@ $(document).ready(function(){
 		let searchParams = new URLSearchParams(window.location.search);
 
 		//Test if the GET "theme" parameter do exists in the URL.
-		if (searchParams.has("theme"))
+		if (searchParams.has("selectedTheme"))
 		{
 			//Test if it's value is equal to "bright".
-			if (searchParams.get("theme") == "bright")
+			if (searchParams.get("selectedTheme") == "bright")
 			{
 				$("#select_theme > span").text("BRIGHT MODE");
 				selectDarkTheme();
@@ -139,9 +141,10 @@ let resizeNav = 0;
 	  {
 	  	showNav();
 	  	resizeNav = 1
-	  	$("#register_tablet_mobile").css({"margin-left": "0px"});	
-		$("#connexion_form_tablet_mobile").css({"margin-left": "0px"});	
-		$("#publish").css({"margin-left": "0px"});	
+	  	$("#registerForm").css({"margin-left": "0px"});	
+		$("#connexionForm").css({"margin-left": "0px"});	
+		$("#publishForm").css({"margin-left": "0px"});
+		$("#publishFormTwo").css({"margin-left": "0px"});	
 	  }
 	});
 

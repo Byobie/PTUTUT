@@ -13,8 +13,8 @@
 			unset($_SESSION["publishForm"]);
 		}
 
-		$_SESSION["pagePosition"] = "SIGN IN";
-		$template = "connexion.html.twig";
+		$_SESSION["pagePosition"] = "FRESH";
+		$template = "main_page.html.twig";
 
 		require("./constructor.php");
 
@@ -24,15 +24,14 @@
 	{
 		if(isset($_GET["selectedTheme"]))
 		{
-			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
+			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
 			exit;
 		}
 		else
 		{
-			header('Location: ../../index.php?selectedTheme=dark&pageNumber=3');
+			header('Location: ../../index.php?selectedTheme=dark&pageNumber=0');
 			exit;
-		}
-		
+		}		
 	}
 
 

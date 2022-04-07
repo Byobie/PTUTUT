@@ -2,48 +2,36 @@
 
 	session_start();
 
-	//INCLUSION OF THE TWIG MOTOR AND THE TOOLS TO CONNECT TO THE DATABASE.
-
-	require("../include/init_twig.php");
-	require("../../model/class/sqlQuery.class.php");
-
-	//SQLQUERY IS AN EXTENDED CLASS, WHICH GENERATE A PDO AND ASSOCIATE SOME REQUEST.
-
-	$dbQuery = new sqlQuery("99percents", "localhost", "utf8", 3308, "root", "");
-	$table = $dbQuery->getDataWithoutCondition("site", "reference, value");
-	$connexion = 0;
-	
-
-	if(isset($_GET["theme"]))
+	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
-		$theme = $_GET["theme"];
+		unset($_SESSION["access"]);
+
+		$_SESSION["accessConstructor"] = true;
+
+		if(isset($_SESSION["publishForm"]) && $_SESSION["publishForm"] == true)
+		{
+			unset($_SESSION["publishForm"]);
+		}
+
+		$_SESSION["pagePosition"] = "SIGN UP";
+		$template = "register.html.twig";
+
+		require("./constructor.php");
+
+		$_SESSION["accessConstructor"] = false;
 	}
 	else
 	{
-		$theme = "dark";
+		if(isset($_GET["selectedTheme"]))
+		{
+			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=1');
+			exit;
+		}
+		else
+		{
+			header('Location: ../../index.php?selectedTheme=dark&pageNumber=1');
+			exit;
+		}
+		
 	}
-
-	if(isset($_SESSION["registerError"]))
-	{
-		$registerError = $_SESSION["registerError"];
-	}
-	else
-	{
-		$registerError = "";
-	}
-
-	
-	if(isset($_SESSION["connexion"]) && $_SESSION["connexion"] == true)
-	{
-		$connexion = 1;
-	}
-	else
-	{
-		$connexion = 0;
-	}
-
-	$position = $_SESSION["position"];
-
-    echo $twig->render("register.html.twig", array('site' => $table, 'theme' => $theme, "connexion" => $connexion, "registerError" => $registerError, "position" => $position));
-
 ?>

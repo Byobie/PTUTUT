@@ -5,14 +5,14 @@
 {% endblock %}
 	<body>
 {% block header %}
-{% if connexion == 1 %}
+{% if connexionStatut is same as(true) %}
 {{ include("header_connected.html.twig") }}
 {% else %}
 {{ include("header.html.twig") }}
 {% endif %}
 {% endblock %}
 {% block nav %}
-{% if connexion == 1 %}
+{% if connexionStatut is same as(true) %}
 {{ include("nav_connected.html.twig") }}
 {% else %}
 {{ include("nav.html.twig") }}

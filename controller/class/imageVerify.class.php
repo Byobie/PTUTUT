@@ -2,28 +2,27 @@
 
     class imageVerify
     {
-        private $target_dir = "";
-        private $target_file = "";
-        private $imageFileType = "";
+        private $targetFile = "";
+        private $temporaryFile = "";
 
-        public function __construct($path, $file)
+        public function __construct($targetDir, $temporaryDir, $file)
         {
-            $this->target_dir = $path;
-            $this->target_file = $this->target_dir . basename($file["name"]);            
+            $this->targetFile = $targetDir.$file;
+            $this->temporaryFile = $temporaryDir.$file;      
         }
 
-        public function checkImage($submit, $fileToUpload)
+        public function checkImage()
         {
-            $check = $this->checkDim($submit, $fileToUpload);
+            $check = $this->checkFormat();
             if ($check === true) 
             {
-                $check = $this->checkExistence();
+                $check = $this->checkDim();
                 if ($check === true) 
                 {
-                    $check = $this->checkSize($fileToUpload);
+                    $check = $this->checkExistence();
                     if ($check === true)
                     {
-                        $check = $this->checkFormat($submit, $fileToUpload);
+                        $check = $this->checkSize();
                         if ($check === true)
                         {
                             return $check;
@@ -49,53 +48,52 @@
             }
         }
 
-        private function checkDim($submit, $fileToUpload)
+        private function deleteImage()
+        {
+            unlink($this->temporaryFile);
+        }
+
+        private function checkDim()
         {
             // Check if image file is a actual image or fake image
-            if(isset($submit)) 
-            {
-                $check = getimagesize($fileToUpload["tmp_name"]);
+            $check = getimagesize($this->temporaryFile);
 
-                if($check[0] == 250 && $check[1] == 250) 
-                {
-                    $result = true;
-                    return $result;
-                } 
-                else 
-                {
-                    $result = "The image must be 250px on 250px.";
-                    return $result; 
-                }
-            }
+            if($check[0] == 250 && $check[1] == 250) 
+            {
+                $result = true;
+                return $result;
+            } 
             else 
             {
-                $result = "An error occured during the uploading. Please, try again.";
+                $result = "The image must be 250px on 250px.";
+                $this->deleteImage();
                 return $result;  
-            } 
+            }
         }
 
         private function checkExistence()
         {
             // Check if file already exists
-            if (file_exists($this->target_file)) 
+            if (file_exists($this->targetFile)) 
             {
                 $result = "This name is already used.";
+                $this->deleteImage();
                 return $result;  
             }
             else
             {
                 $result = true;
-                $this->imageFileType = strtolower(pathinfo($this->target_file,PATHINFO_EXTENSION));
                 return $result;              
             }
         }
 
-        private function checkSize($fileToUpload)
+        private function checkSize()
         {
 
-            if ($fileToUpload["size"] > 5120000) 
+            if ($this->temporaryFile > 5120000) 
             {
                 $result = "Your image must not weight more than 5 MB.";
+                $this->deleteImage();
                 return $result;  
             }
             else
@@ -105,16 +103,17 @@
             }
         }
 
-        private function checkFormat($submit, $fileToUpload)
+        private function checkFormat()
         {
             // Allow certain file formats
 
             $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-            $detectedType = exif_imagetype($fileToUpload['tmp_name']);
+            $detectedType = exif_imagetype($this->temporaryFile);
 
             if(!in_array($detectedType, $allowedTypes)) 
             {
                 $result = "Wrong format. Only jpg, gif, png and jpeg allowed.";
+                $this->deleteImage();
                 return $result;  
             }
             else

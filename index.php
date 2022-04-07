@@ -1,21 +1,17 @@
 <?php 
 	//INCLUDE THE OBJECT CLASSES NECESSARY FOR THE CONTROLLER TO WORK.
-	require("./controller/class/registerVerify.class.php");
-	require("./model/class/makeDataBase.class.php");
-	require("./controller/class/connexionVerify.class.php");
-	require("./controller/class/publishVerify.class.php");
-	require("./controller/class/imageVerify.class.php");
+	require("./controller/pages/dispatcher.php");
 
 	//STARTING THE SESSION AT THE ROOT.
-	session_start();
 
-	//I PUT THE RESET OF THE ERROR MESSAGE FOR REGISTER FORM BECAUSE IT NEEDS TO BE CLEANED AT EVERY TRY AND WHEN THE REGISTER IS SUCESSFULL TOO.
-	$_SESSION["registerError"] = "";
 
-	//HERE BEGINS THE CONTROLER SWITCH. IT REQUIRES THE PAGE NUMBER TO REDIRECT THE USER. EACH PAGE HAVE A SPECIFIC AND STATIC PAGE NUMBER. IF THERE IS NO PAGE NUMBER PROVIDED BY THE PARAMETER GET, THE USER IS REDIRECTED TO THE MAIN PAGE. I CHOOSED GET PARAMETER BECAUSE IT'S NOT SENSIBLE DATAS.
-	if(isset($_GET["page_number"]) && $_GET["page_number"] >= 0)
-	{
-		//CALL FOR THE DATABASE. USEFUL FOR THE CONNEXION/REGISTER VERIFICATIONS.
+
+
+
+
+
+
+		/*//CALL FOR THE DATABASE. USEFUL FOR THE CONNEXION/REGISTER VERIFICATIONS.
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
 
 		//THE PAGE NUMBER IS SAVED AND THE THEME TOO, WHICH IS PROVIDED BY A GET PARAMTER.
@@ -269,6 +265,6 @@
 		$_SESSION["position"] = "FRESH";
 		header('Location: ./controller/pages/main_page.php?theme=dark');
 		exit;
-	}
+	}*/
 
 ?>

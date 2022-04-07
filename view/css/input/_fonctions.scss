@@ -402,6 +402,8 @@
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
 			border: none;
+			font-family: "roboto";
+			font-size: 24px;
 		}
 	}
 }
@@ -436,6 +438,8 @@
 			background-color: $buttonColorGreen;
 			width: calc(50vw + 7px);
 			border: none;
+			font-family: "roboto";
+			font-size: 24px;
 		}
 	}
 }
@@ -470,6 +474,8 @@
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
 			border: none;
+			font-family: "roboto";
+			font-size: 24px;
 		}
 	}
 }
@@ -525,6 +531,8 @@
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
 			border: none;
+			font-family: "roboto";
+			font-size: 24px;
 		}
 	}
 }
@@ -580,6 +588,8 @@
 			background-color: $buttonColorGreen;
 			width: calc(50vw + 7px);
 			border: none;
+			font-family: "roboto";
+			font-size: 24px;
 		}
 	}
 }
@@ -637,6 +647,8 @@
 			background-color: $buttonColorGreen;
 			width: calc(75vw + 7px);
 			border: none;
+			font-family: "roboto";
+			font-size: 24px;
 		}
 	}
 }
@@ -669,6 +681,15 @@
 			border: solid black 2px;
 		}
 
+		input[type="file"]
+		{
+			border: none;
+			margin-top: 22px;
+			margin-bottom: 22px;
+			font-family: "roboto";
+			font-size: 20px;
+		}
+
 		span
 		{
 			margin-bottom: 33px;
@@ -691,6 +712,175 @@
 			font-weight: bold;
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			margin-top: 11px;
+			margin-left: 100px;
+			width: 300px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			border: none;			
+		}
+	}
+}
+
+%tablet_publish_step_two
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 110px);
+
+		input
+		{
+			height: 44px;
+			margin-top: 11px;
+			width: 50vw;
+			border: solid black 2px;
+		}
+
+		input[type="file"]
+		{
+			border: none;
+			margin-top: 22px;
+			margin-bottom: 22px;
+			font-family: "roboto";
+			font-size: 20px;
+		}
+
+		span
+		{
+			margin-bottom: 33px;
+			align-self: flex-end;
+		}
+
+		textarea
+		{
+			height: 176px;
+			margin-top: 11px;
+			width: 50vw;
+			border: solid black 2px;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc(50vw + 7px);
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			width: calc(50vw + 7px);
+			border: none;
+		}
+	}
+}
+
+%mobile_publish_step_two
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 110px);
+		width: 75vw;
+
+		input
+		{
+			height: 44px;
+			margin-top: 11px;
+			width: 75vw;
+			border: solid black 2px;
+		}
+
+		input[type="file"]
+		{
+			border: none;
+			margin-top: 22px;
+			margin-bottom: 22px;
+			font-family: "roboto";
+			font-size: 20px;
+		}
+
+		span
+		{
+			margin-bottom: 33px;
+			align-self: flex-end;
+		}
+
+		textarea
+		{
+			height: 176px;
+			margin-top: 11px;
+			width: 75vw;
+			border: solid black 2px;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc(75vw + 7px);
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			width: calc(75vw + 7px);
 			border: none;
 		}
 	}

@@ -140,32 +140,28 @@ html
 			}
 		}
 
-		#register_desktop
-		{
-			display: none;
-		}
-
-		#register_tablet_mobile
+		#registerForm
 		{
 			color: white;
 			@extend %tablet_mobile_register_form;
 		}
 
-		#connexion_form_desktop
-		{
-			display: none;
-		}
-
-		#connexion_form_tablet_mobile
+		#connexionForm
 		{
 			color: white;
 			@extend %tablet_mobile_register_form;
 		}
 
-		#publish
+		#publishForm
 		{
 			color: white;
 			@extend %mobile_publish_form;
+		}
+
+		#publishFormTwo
+		{
+			color: white;
+			@extend %mobile_publish_step_two;
 		}
 	}
 	

@@ -8,9 +8,9 @@
 
 		$_SESSION["accessConstructor"] = true;
 
-		$_SESSION["pagePosition"] = "PUBLISH STEP 2/3";
+		$_SESSION["pagePosition"] = "PUBLISH STEP 1/3";
 		$_SESSION["publishForm"] = true;
-		$template = "publishStepTwo.html.twig";
+		$template = "publishStepOne.html.twig";
 
 		require("./constructor.php");
 
@@ -21,12 +21,12 @@
 	{
 		if(isset($_GET["selectedTheme"]))
 		{
-			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=5');
+			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=4');
 			exit;
 		}
 		else
 		{
-			header('Location: ../../index.php?selectedTheme=dark&pageNumber=5');
+			header('Location: ../../index.php?selectedTheme=dark&pageNumber=4');
 			exit;
 		}
 	}

@@ -3,29 +3,21 @@
 	class uploadImage
 	{
 		private $database;
-        private $target_file = "";
-        private $fileToUpload = "";
+        private $targetFile = "";
+        private $fromPath = "";
+        private $toPath = "";
 
-		public function __construct($database, $targetFile, $fileToUpload)
+		public function __construct($database, $file, $from, $to)
 		{
 			$this->database = $database;
-            $this->target_file = $targetFile;    
-            $this->fileToUpload = $fileToUpload;   
-		}
-
-		public function getPath()
-		{
-			return $this->target_file;
+			$this->targetFile = $file;  
+			$this->fromPath = $from;
+			$this->toPath = $to;
 		}
 
 		public function moveFile()
 		{
-			move_uploaded_file($this->fileToUpload["tmp_name"], $this->target_file.$this->fileToUpload["name"]);
-		}
-
-		private function addFileToDatabase()
-		{
-
+			rename($this->fromPath.$this->targetFile, $this->toPath.$this->targetFile);
 		}
 	}
 

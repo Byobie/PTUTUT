@@ -156,32 +156,28 @@ html
 			}
 		}
 
-		#register_desktop
+		#registerForm
 		{
 			color: black;
 			@extend %desktop_register_form;
 		}
 		
-		#register_tablet_mobile
-		{
-			display: none;
-		}
-
-		#connexion_form_desktop
+		#connexionForm
 		{
 			color: black;
 			@extend %desktop_connexion_form;
 		}		
 
-		#connexion_form_tablet_mobile
-		{
-			display: none;
-		}	
-
-		#publish
+		#publishForm
 		{
 			color: black;
 			@extend %desktop_publish_form;
+		}
+
+		#publishFormTwo
+		{
+			color: black;
+			@extend %desktop_publish_step_two;
 		}
 	}
 
