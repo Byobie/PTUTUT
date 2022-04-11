@@ -1,5 +1,4 @@
 <?php 
-
 	//Extend makeDatabase class to associate SQL requests in form of methods. Filtrate the result to present a viable array, ready to use.
 
 	require __DIR__ . "/makeDatabase.class.php";
@@ -10,6 +9,20 @@
 		{
 			$db = $this->dataBase;
 			$query = $db->prepare("SELECT $fields FROM $table");
+			$query->execute();
+
+			$data = $query->fetchAll();
+
+			$result = $this->organiseData($data);
+
+			return $result;
+		}
+
+		public function getCategory ($table, $fields)
+		{
+			$db = $this->dataBase;
+			$query = $db->prepare("SELECT $fields FROM $table WHERE type = 'category'");
+
 			$query->execute();
 
 			$data = $query->fetchAll();

@@ -7,7 +7,6 @@
 
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
-
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
 
 		$user = new user($database->getDatabase());
@@ -20,6 +19,14 @@
 
 		$_SESSION["access"] = false;
 		unset($_SESSION["access"]);
+
+		if(isset($_SESSION["publishShortcut"]) && $_SESSION["publishShortcut"] === true)
+		{		
+			unset($_SESSION["publishShortcut"]);
+			
+			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=4');
+			exit;
+		}
 
 		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&page_number=0');
 		exit;

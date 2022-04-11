@@ -119,7 +119,45 @@
 			$imagePublishSuccess = false;
 		}
 
-		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage));
+		if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true)
+		{
+			$publishSections = $dbQuery->getCategory("site", "reference, value");
+		}
+		else
+		{
+			$publishSections = "";
+		}
+
+		if(isset($_SESSION["publishCategoryError"]))
+		{
+			$publishCategoryError = $_SESSION["publishCategoryError"];
+		}
+		else
+		{
+			$publishCategoryError = "";
+		}
+
+		if(isset($_SESSION["publishColor"]) && $_SESSION["publishColor"] === true)
+		{
+			$publishColor = true;
+		}
+		else
+		{
+			$publishColor = false;
+		}
+
+		if(isset($_SESSION["login"]) && isset($_SESSION["email"]))
+		{
+			$registerLogin = $_SESSION["login"];
+			$registerEmail = $_SESSION["email"];
+		}
+		else
+		{
+			$registerLogin = "";
+			$registerEmail = "";
+		}
+
+		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail));
 	}
 	else
 	{

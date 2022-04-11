@@ -8,9 +8,30 @@
 
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
+
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
+
+		if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true) 
+		{
+			if($_SESSION["publishCategorySelected"] == "")
+			{
+				$_SESSION["publishCategoryError"] = "You must select a category.";
+				$_SESSION["access"] = false;
+
+				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=6');
+				exit;
+			}
+			else
+			{
+				$_SESSION["publishStepFour"] = true;
+				$_SESSION["access"] = false;
+				unset($_SESSION["publishCategoryError"]);
+				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=7');
+				exit;
+			}
+		}
 		
-		if(isset($_SESSION["publishImageUploaded"]) && $_SESSION["publishImageUploaded"] === true)
+		elseif(isset($_SESSION["publishImageUploaded"]) && $_SESSION["publishImageUploaded"] === true)
 		{
 			unset($_SESSION["publishImageUploaded"]);
 			$imageVerify = new imageVerify("../../model/Uploads/", "../../model/temporaryUploads/", $_SESSION["publishImageName"]);
@@ -20,6 +41,7 @@
 			{
 				$_SESSION["imagePublishMessage"] = "Your image has been uploaded.";
 				$_SESSION["imagePublishSuccess"] = true;
+				$_SESSION["publishStepThree"] = true;
 				
 				header('Location: ../../model/script/createImage.php?selectedTheme='.$_GET["selectedTheme"]);
 				exit;
@@ -33,47 +55,17 @@
 				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=5');
 				exit;
 			}
-
-			/*$image = file_get_contents("../../model/temporaryUploads/".$_SESSION["imageName"]);
-			var_dump($image);*/
-
-			var_dump($result);
-
-			/*
-
-						if($image === true && !isset($_SESSION["imageUploadSuccess"]))
-						{
-							$test = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "./model/uploads/".$_FILES["fileToUpload"]["name"]);
-							$_SESSION["imageUploadSuccess"] = true;
-							$_SESSION["validationImage"] = "Your image has been uploaded.";
-							$_SESSION["name"] = $_FILES["fileToUpload"]["name"];
-							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
-							exit;
-						}
-						elseif (isset($_SESSION["imageUploadSuccess"]) && $_SESSION["imageUploadSuccess"] === true)
-						{
-							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
-							exit;	
-						}
-						else
-						{
-							$_SESSION["imageError"] = $image;
-							header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
-							exit;	
-						}
-					}
-					else
-					{
-						header('Location: ./controller/pages/publishStepTwo.php?theme='.$theme);
-						exit;
-					}*/
-
-
-
-
-
-
 		}
+
+		elseif (isset($_SESSION["publishImageSkip"]) && $_SESSION["publishImageSkip"] === true) 
+		{
+			unset($_SESSION["publishImageSkip"]);
+			$_SESSION["publishStepThree"] = true;
+				
+			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=6');
+			exit;
+		}
+		
 		else
 		{
 			//THE PURPOSE OF REGISTER CLASS IS TO VERIFY DATAS AND TO RETURN TRUE AS RESULT IF ALL IS GOOD OR AN ERROR MESSAGE IF IT IS NOT.

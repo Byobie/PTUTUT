@@ -71,7 +71,7 @@ html
 
 		#position_desktop
 		{
-			@include position_desktop ($colorFontBlack);
+			@include position_desktop ($colorFontBlack, #caa753);
 		}
 
 		#select_theme
@@ -178,6 +178,12 @@ html
 		{
 			color: black;
 			@extend %desktop_publish_step_two;
+		}
+
+		#publishFormThree
+		{
+			color: black;
+			@extend %desktop_publish_step_three;
 		}
 	}
 

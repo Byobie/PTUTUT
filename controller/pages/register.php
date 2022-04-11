@@ -13,7 +13,7 @@
 			unset($_SESSION["publishForm"]);
 		}
 
-		$_SESSION["pagePosition"] = "SIGN UP";
+		$_SESSION["pagePosition"] = "REGISTER";
 		$template = "register.html.twig";
 
 		require("./constructor.php");

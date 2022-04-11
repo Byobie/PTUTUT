@@ -1,5 +1,5 @@
 		<nav>
-			<div id="position_desktop">You are in <span>{{pagePosition}}</span> ! :D</div>
+			<div id="position_desktop">You are in {% if publishColor is same as(true) %}<span style="color: #0099CC;">{{pagePosition}}</span>{% else %}<span>{{pagePosition}}</span>{% endif %} ! :D</div>
 			<div id="select_theme">
 				<span></span>
 				<img src="{{site['switch_theme']}}" alt="icone_for_switch_dark">

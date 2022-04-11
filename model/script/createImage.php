@@ -12,12 +12,8 @@
 		$image = new uploadImage($database->getDatabase(), $_SESSION["publishImageName"], "../temporaryUploads/", "../uploads/");
 		$image->moveFile();
 
-		return;	
-
-		/*$_SESSION["access"] = false;
-		unset($_SESSION["access"]);
-		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=5');
-		exit;*/
+		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=6');
+		exit;
 	}
 	else
 	{

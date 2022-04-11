@@ -8,13 +8,16 @@
 
 		$_SESSION["accessConstructor"] = true;
 
-		$_SESSION["pagePosition"] = "PUBLISH STEP 2/3";
+		$_SESSION["publishColor"] = true;
+		$_SESSION["pagePosition"] = "PUBLISH STEP 2/4";
+		
 		$_SESSION["publishForm"] = true;
 		$template = "publishStepTwo.html.twig";
 
 		require("./constructor.php");
 
 		$_SESSION["accessConstructor"] = false;
+		$_SESSION["publishColor"] = false;
 
 	}
 	else

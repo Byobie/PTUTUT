@@ -2,70 +2,16 @@
 
 	session_start();
 
+	require("./controller/pages/cleaner.php");
+
 	if(isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 0)
 	{
-		if(isset($_SESSION["registerError"]))
-		{
-			unset($_SESSION["registerError"]);
-		}
-
-		if(isset($_SESSION["connexionError"]))
-		{
-			unset($_SESSION["connexionError"]);
-		}
-
-		if(isset($_SESSION["publishError"]))
-		{
-			unset($_SESSION["publishError"]);
-		}
-
-		if(isset($_SESSION["publishTitle"]))
-		{
-			unset($_SESSION["publishTitle"]);
-		}
-
-		if(isset($_SESSION["publishContent"]))
-		{
-			unset($_SESSION["publishContent"]);
-		}
-
-		if(isset($_SESSION["publishStepTwo"]))
-		{
-			unset($_SESSION["publishStepTwo"]);
-		}
-
 		$_SESSION["access"] = true;
 		header('Location: ./controller/pages/mainPage.php?selectedTheme='.$_GET["selectedTheme"]);
 		exit;	
 	}
 	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 1) 
-	{
-
-		if(isset($_SESSION["connexionError"]))
-		{
-			unset($_SESSION["connexionError"]);
-		}
-
-		if(isset($_SESSION["publishError"]))
-		{
-			unset($_SESSION["publishError"]);
-		}
-
-		if(isset($_SESSION["publishTitle"]))
-		{
-			unset($_SESSION["publishTitle"]);
-		}
-
-		if(isset($_SESSION["publishContent"]))
-		{
-			unset($_SESSION["publishContent"]);
-		}
-
-		if(isset($_SESSION["publishStepTwo"]))
-		{
-			unset($_SESSION["publishStepTwo"]);
-		}
-
+	{	
 		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
 		{
 			header('Location: ./controller/pages/mainPage.php?selectedTheme='.$_GET["selectedTheme"]);
@@ -94,37 +40,6 @@
 	}
 	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 2) 
 	{
-
-		if(isset($_SESSION["registerError"]))
-		{
-			unset($_SESSION["registerError"]);
-		}
-
-		if(isset($_SESSION["connexionError"]))
-		{
-			unset($_SESSION["connexionError"]);
-		}
-
-		if(isset($_SESSION["publishError"]))
-		{
-			unset($_SESSION["publishError"]);
-		}
-
-		if(isset($_SESSION["publishTitle"]))
-		{
-			unset($_SESSION["publishTitle"]);
-		}
-
-		if(isset($_SESSION["publishContent"]))
-		{
-			unset($_SESSION["publishContent"]);
-		}
-
-		if(isset($_SESSION["publishStepTwo"]))
-		{
-			unset($_SESSION["publishStepTwo"]);
-		}
-
 		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
 		{
 			$_SESSION["connexionStatut"] = false;
@@ -141,27 +56,6 @@
 	}
 	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 3) 
 	{
-
-		if(isset($_SESSION["registerError"]))
-		{
-			unset($_SESSION["registerError"]);
-		}
-
-		if(isset($_SESSION["publishError"]))
-		{
-			unset($_SESSION["publishError"]);
-		}
-
-		if(isset($_SESSION["publishTitle"]))
-		{
-			unset($_SESSION["publishTitle"]);
-		}
-
-		if(isset($_SESSION["publishContent"]))
-		{
-			unset($_SESSION["publishContent"]);
-		}
-
 		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
 		{
 			header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
@@ -189,23 +83,10 @@
 	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 4) 
 	{
 
-		if(isset($_SESSION["registerError"]))
-		{
-			unset($_SESSION["registerError"]);
-		}
-
-		if(isset($_SESSION["connexionError"]))
-		{
-			unset($_SESSION["connexionError"]);
-		}
-
-		if(isset($_SESSION["imagePublishError"]))
-		{
-			unset($_SESSION["imagePublishError"]);
-		}
-
 		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
 		{
+			unset($_SESSION["publishShortcut"]);
+			
 			$_SESSION["access"] = true;
 
 			if(isset($_POST["formSent"]) && $_POST["formSent"] == 3)
@@ -233,6 +114,8 @@
 			$_SESSION["access"] = true;
 
 			$_SESSION["publishShortcut"] = true;
+			$_SESSION["connexionError"] = "You must log in first !";
+			
 			header('Location: ./controller/pages/connexion.php?selectedTheme='.$_GET["selectedTheme"]);
 			exit;
 		}
@@ -240,25 +123,15 @@
 	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 5) 
 	{
 
-		if(isset($_SESSION["registerError"]))
-		{
-			unset($_SESSION["registerError"]);
-		}
-
-		if(isset($_SESSION["connexionError"]))
-		{
-			unset($_SESSION["connexionError"]);
-		}
-
-		if(isset($_SESSION["publishError"]))
-		{
-			unset($_SESSION["publishError"]);
-		}
-
 		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
 		{
 			if(isset($_SESSION["publishStepTwo"]) && $_SESSION["publishStepTwo"] === true)
 			{
+				if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true)
+				{
+					unset($_SESSION["publishStepThree"]);
+				}	
+
 				$_SESSION["access"] = true;
 
 				if(isset($_POST["formSent"]) && $_POST["formSent"] == 4)
@@ -267,8 +140,9 @@
 
 					if($_FILES["fileToUpload"]["error"] == 4)
 					{
-						print("EN CONSTRUCTION ! *BRRRRR* ");
-						return;
+						$_SESSION["publishImageSkip"] = true;
+						header('Location: ./controller/pages/publishController.php?selectedTheme='.$_GET["selectedTheme"]);
+						exit;
 					}
 					else
 					{
@@ -304,7 +178,106 @@
 		}
 	}
 
+	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 6) 
+	{
+		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
+		{
+			if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true)
+			{
+				if(isset($_SESSION["publishStepFour"]) && $_SESSION["publishStepFour"] === true)
+				{
+					unset($_SESSION["publishStepFour"]);
+				}
 
+				$_SESSION["access"] = true;
+
+				if(isset($_POST["formSent"]) && $_POST["formSent"] == 5)
+				{
+					$_SESSION["publishCategorySelected"] = $_POST["categoryPublish"];
+
+					header('Location: ./controller/pages/publishController.php?selectedTheme='.$_GET["selectedTheme"]);
+					exit;
+				}
+				else
+				{
+					header('Location: ./controller/pages/publishStepThree.php?selectedTheme='.$_GET["selectedTheme"]);
+					exit;
+				}
+			}
+			else
+			{
+				$_SESSION["access"] = true;
+
+				header('Location: ./controller/pages/publishStepTwo.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+			}
+
+		}
+		else
+		{
+			$_SESSION["access"] = true;
+
+			$_SESSION["publishShortcut"] = true;
+			header('Location: ./controller/pages/connexion.php?selectedTheme='.$_GET["selectedTheme"]);
+			exit;
+		}
+	}
+
+		elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 7) 
+	{
+
+		if(isset($_SESSION["registerError"]))
+		{
+			unset($_SESSION["registerError"]);
+		}
+
+		if(isset($_SESSION["connexionError"]))
+		{
+			unset($_SESSION["connexionError"]);
+		}
+
+		if(isset($_SESSION["publishError"]))
+		{
+			unset($_SESSION["publishError"]);
+		}
+
+		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
+		{
+			if(isset($_SESSION["publishStepFour"]) && $_SESSION["publishStepFour"] === true)
+			{
+				$_SESSION["access"] = true;
+
+				if(isset($_POST["formSent"]) && $_POST["formSent"] == 6)
+				{
+
+					print("En construction ! *BRRRRRRRRR*");
+					return;
+
+				}
+				else
+				{
+					print("En construction ! *BRRRRRRRRR*");
+					return;
+				}
+			}
+			else
+			{
+				$_SESSION["access"] = true;
+
+				header('Location: ./controller/pages/publishStepThree.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+			}
+
+		}
+		else
+		{
+			$_SESSION["access"] = true;
+
+			$_SESSION["publishShortcut"] = true;
+			header('Location: ./controller/pages/connexion.php?selectedTheme='.$_GET["selectedTheme"]);
+			exit;
+		}
+	}
 
 	else
 	{
@@ -337,6 +310,12 @@
 		{
 			unset($_SESSION["publishStepTwo"]);
 		}
+
+		if(isset($_SESSION["publishStepThree"]))
+		{
+			unset($_SESSION["publishStepThree"]);
+		}
+
 
 		$_SESSION["access"] = true;
 		header('Location: ./controller/pages/mainPage.php?selectedTheme=dark');

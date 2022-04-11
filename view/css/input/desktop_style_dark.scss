@@ -71,7 +71,7 @@ html
 
 		#position_desktop
 		{
-			@include position_desktop ($colorFontWhite);
+			@include position_desktop ($colorFontWhite, $buttonColorOrange);
 		}
 
 		#select_theme
@@ -164,6 +164,12 @@ html
 		{
 			color: white;
 			@extend %desktop_publish_step_two;
+		}
+
+		#publishFormThree
+		{
+			color: white;
+			@extend %desktop_publish_step_three;
 		}
 	}
 

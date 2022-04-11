@@ -50,18 +50,20 @@
 	overflow-x: hidden;
 }
 
-@mixin position_desktop ($color)
+@mixin position_desktop ($color, $colorSpan)
 {
 	height: 44px;
 	width: 256px;
 	margin: 22px 22px 0px 22px;
 	font-family: $titleFont;
-	font-size: 20px;
+	font-size: 24px;
 	color: $color;
 
 	span 
 	{
 		text-decoration: underline;
+		color: $colorSpan;
+		font-weight: bold;
 	}
 }
 
@@ -163,6 +165,57 @@
 	}
 }
 
+@mixin tablet_mobile_register_form ($width)
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 110px);
+		width: $width;
+
+		input
+		{
+			height: 44px;
+			margin-top: 11px;
+			margin-bottom: 33px;
+			width: $width;
+			border: solid black 2px;
+			align-self: center;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc($width + 7px);
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+			align-self: center;
+		}
+
+		a
+		{
+			text-decoration: none;
+			font-family: "economica";
+			font-size: 24px;
+			margin-top: 22px;
+			text-align: center;
+			color: inherit;
+			width: calc($width + 7px);
+			align-self: center;
+		}
+	}
+}
+
 
 //PLACEHOLDERS
 %header_desktop
@@ -197,6 +250,8 @@
 	span 
 	{
 		text-decoration: underline;
+		color: $buttonColorOrange;
+		font-weight: bold;
 	}
 }
 
@@ -328,7 +383,7 @@
 	div:first-child
 	{
 		display: flex;
-		flex-direction: row;
+		flex-direction: row-reverse;
 		justify-content: space-evenly;
 
 		div
@@ -391,6 +446,7 @@
 			margin-top: 11px;
 			margin-bottom: 33px;
 			width: 500px;
+			border: solid black 2px;
 		}
 
 		input[type=submit]
@@ -401,42 +457,6 @@
 			font-weight: bold;
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
-			border: none;
-			font-family: "roboto";
-			font-size: 24px;
-		}
-	}
-}
-
-%tablet_mobile_register_form
-{
-	form
-	{
-		font-family: "economica";
-		font-size: 24px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-content: center;
-		height: calc(100vh - 110px);
-
-
-		input
-		{
-			height: 44px;
-			margin-top: 11px;
-			margin-bottom: 33px;
-			width: 50vw;
-		}
-
-		input[type=submit]
-		{
-			margin-top: 11px;
-			margin-bottom: 11px;
-			font-weight: bold;
-			box-shadow: 2px 2px 3px black;
-			background-color: $buttonColorGreen;
-			width: calc(50vw + 7px);
 			border: none;
 			font-family: "roboto";
 			font-size: 24px;
@@ -463,6 +483,7 @@
 			margin-top: 11px;
 			margin-bottom: 33px;
 			width: 500px;
+			border: solid black 2px;
 		}
 
 		input[type=submit]
@@ -476,6 +497,16 @@
 			border: none;
 			font-family: "roboto";
 			font-size: 24px;
+		}
+
+		a
+		{
+			text-decoration: none;
+			font-family: "economica";
+			font-size: 24px;
+			margin-top: 22px;
+			text-align: center;
+			color: inherit;
 		}
 	}
 }
@@ -655,14 +686,6 @@
 
 %desktop_publish_step_two
 {
-	h3
-	{
-		font-family: "economica";
-		font-size: 24px;
-		text-align: center;
-		margin-bottom: 2em;
-	}
-
 	form
 	{
 		font-family: "economica";
@@ -677,7 +700,6 @@
 		{
 			height: 44px;
 			margin-top: 11px;
-			width: 500px;
 			border: solid black 2px;
 		}
 
@@ -707,8 +729,9 @@
 		input[type=submit]
 		{
 			margin-top: 11px;
-			margin-left: 100px;
 			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
 			font-weight: bold;
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
@@ -727,8 +750,9 @@
 			padding-top: 10px;
 			font-size: 24px;
 			margin-top: 11px;
-			margin-left: 100px;
 			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
 			font-weight: bold;
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorRed;
@@ -862,7 +886,7 @@
 			font-weight: bold;
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorGreen;
-			width: calc(75vw + 7px);
+			width: 75vw;
 			border: none;
 			font-family: "roboto";
 			font-size: 24px;
@@ -880,7 +904,227 @@
 			font-weight: bold;
 			box-shadow: 2px 2px 3px black;
 			background-color: $buttonColorRed;
-			width: calc(75vw + 7px);
+			width: 75vw;
+			border: none;
+		}
+	}
+}
+
+%desktop_publish_step_three
+{
+
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 154px);
+		margin-top: -10px;
+
+		span 
+		{
+			margin-bottom: 33px;
+		}
+
+		label
+		{
+			margin-bottom: 22px;
+			font-size: 24px;
+		}
+
+		select
+		{
+			font-family: "roboto";
+			height: 44px;
+			border: solid black 2px;
+			font-size: 22px;
+		}
+
+		option
+		{
+			font-family: "roboto";
+			height: 44px;
+			font-size: 22px;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 44px;
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			border: none;
+			font-family: "roboto";
+			height: 44px;
+			font-size: 24px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			margin-top: 11px;
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			border: none;			
+		}
+	}
+}
+
+%tablet_publish_step_three
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 110px);
+		margin-top: -22px;
+
+		span 
+		{
+			margin-bottom: 33px;
+		}
+
+		label
+		{
+			margin-bottom: 22px;
+			font-size: 24px;
+		}
+
+		select
+		{
+			font-family: "roboto";
+			height: 44px;
+			border: solid black 2px;
+			font-size: 22px;
+		}
+
+		option
+		{
+			font-family: "roboto";
+			height: 44px;
+			font-size: 22px;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 44px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			height: 44px;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc(50vw + 7px);
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			width: calc(50vw + 7px);
+			border: none;
+		}
+	}
+}
+
+%mobile_publish_step_three
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 110px);
+		width: 75vw;
+		margin-top: -22px;
+
+		span 
+		{
+			margin-bottom: 33px;
+		}
+
+		label
+		{
+			margin-bottom: 22px;
+			font-size: 24px;
+		}
+
+		select
+		{
+			font-family: "roboto";
+			height: 44px;
+			border: solid black 2px;
+			font-size: 22px;
+		}
+
+		option
+		{
+			font-family: "roboto";
+			height: 44px;
+			font-size: 22px;
+		}
+
+		input[type=submit]
+		{
+			margin-top: 11px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: 75vw;
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+			height: 44px;
+			margin-top: 44px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			width: 75vw;
 			border: none;
 		}
 	}

@@ -143,13 +143,13 @@ html
 		#registerForm
 		{
 			color: white;
-			@extend %tablet_mobile_register_form;
+			@include tablet_mobile_register_form(50vw);
 		}
 
 		#connexionForm
 		{
 			color: white;
-			@extend %tablet_mobile_register_form;
+			@include tablet_mobile_register_form(50vw);
 		}
 
 		#publishForm
@@ -162,6 +162,12 @@ html
 		{
 			color: white;
 			@extend %tablet_publish_step_two;
+		}
+
+		#publishFormThree
+		{
+			color: white;
+			@extend %tablet_publish_step_three;
 		}
 	}
 	

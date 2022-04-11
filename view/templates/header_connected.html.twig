@@ -6,6 +6,6 @@
 					<div><a href=""><h4>{{site["button_profil"]}}</h4></a></div>
 					<div><a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=2"><h4>{{site["button_logout"]}}</h4></a></div>
 				</div>
-				<div id="position_tablet_mobile"><span>{{pagePosition}}</span></div>			
+				<div id="position_tablet_mobile">You are in {% if publishColor is same as(true) %}<span style="color: #0099CC;">{{pagePosition}}</span>{% else %}<span>{{pagePosition}}</span>{% endif %} ! :D</div>			
 			</div>
 		</header>

@@ -35,9 +35,6 @@
 	}
 	else
 	{
-		$_SESSION["access"] = false;
-		unset($_SESSION["access"]);
-
 		if(isset($_GET["selectedTheme"]))
 		{
 			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=1');
