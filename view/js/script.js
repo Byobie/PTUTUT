@@ -18,6 +18,8 @@ $(document).ready(function(){
 		$("#connexionForm").css({"margin-left": "264px"});	
 		$("#publishForm").css({"margin-left": "264px"});	
 		$("#publishFormTwo").css({"margin-left": "264px"});
+		$("#publishFormThree").css({"margin-left": "264px"});
+		$("#publishFormFour").css({"margin-left": "264px"});
 		closeMenu();
 	}
 
@@ -28,6 +30,8 @@ $(document).ready(function(){
 		$("#connexionForm").css({"margin-left": "0px"});	
 		$("#publishForm").css({"margin-left": "0px"});
 		$("#publishFormTwo").css({"margin-left": "0px"});	
+		$("#publishFormThree").css({"margin-left": "0px"});
+		$("#publishFormFour").css({"margin-left": "0px"});
 		openMenu();
 	}
 
@@ -145,6 +149,8 @@ let resizeNav = 0;
 		$("#connexionForm").css({"margin-left": "0px"});	
 		$("#publishForm").css({"margin-left": "0px"});
 		$("#publishFormTwo").css({"margin-left": "0px"});	
+		$("#publishFormThree").css({"margin-left": "0px"});
+		$("#publishFormFour").css({"margin-left": "0px"})
 	  }
 	});
 

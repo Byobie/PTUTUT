@@ -6,6 +6,11 @@ switch ($pageNumber)
 {
 	case 0 :
 
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
+		}
+
 		if(isset($_SESSION["registerError"]))
 		{
 			unset($_SESSION["registerError"]);
@@ -163,6 +168,11 @@ switch ($pageNumber)
 		if(isset($_SESSION["imagePublishSuccess"]))
 		{
 			unset($_SESSION["imagePublishSuccess"]);
+		}
+
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
 		}	
 
 		break;	
@@ -244,6 +254,11 @@ switch ($pageNumber)
 			unset($_SESSION["imagePublishSuccess"]);
 		}	
 
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
+		}
+
 		break;	
 
 	case 3 :
@@ -306,7 +321,12 @@ switch ($pageNumber)
 		if(isset($_SESSION["imagePublishSuccess"]))
 		{
 			unset($_SESSION["imagePublishSuccess"]);
-		}		
+		}	
+
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
+		}	
 
 		break;
 
@@ -337,6 +357,11 @@ switch ($pageNumber)
 			unset($_SESSION["publishStepFour"]);
 		}
 
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
+		}
+
 		break;
 
 	case 5 :
@@ -360,6 +385,11 @@ switch ($pageNumber)
 		{
 			unset($_SESSION["publishCategoryError"]);
 		}
+
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
+		}
 	
 		break;
 
@@ -378,6 +408,11 @@ switch ($pageNumber)
 		if(isset($_SESSION["publishError"]))
 		{
 			unset($_SESSION["publishError"]);
+		}
+
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
 		}	
 
 		break;
@@ -408,7 +443,7 @@ switch ($pageNumber)
 
 	default :
 
-			if(isset($_SESSION["registerError"]))
+		if(isset($_SESSION["registerError"]))
 		{
 			unset($_SESSION["registerError"]);
 		}
@@ -486,6 +521,11 @@ switch ($pageNumber)
 		if(isset($_SESSION["imagePublishSuccess"]))
 		{
 			unset($_SESSION["imagePublishSuccess"]);
+		}
+
+		if(isset($_SESSION["publishSource"]))
+		{
+			unset($_SESSION["publishSource"]);
 		}
 
 		break;

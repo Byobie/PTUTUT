@@ -10,12 +10,7 @@
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
 
 		$user = new user($database->getDatabase());
-		$user->createUser($_SESSION["password"], $_SESSION["login"], $_SESSION["email"]);
-
-		unset($_SESSION["login"]);
-		unset($_SESSION["password"]);
-		unset($_SESSION["email"]);
-		unset($_SESSION["confirmPassword"]);								
+		$user->createUser($_SESSION["password"], $_SESSION["login"], $_SESSION["email"]);								
 
 		$_SESSION["access"] = false;
 		unset($_SESSION["access"]);

@@ -121,7 +121,7 @@
 
 		if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true)
 		{
-			$publishSections = $dbQuery->getCategory("site", "reference, value");
+			$publishSections = $dbQuery->getDataWithoutCondition("category", "id_category, name_category");
 		}
 		else
 		{
@@ -156,8 +156,16 @@
 			$registerLogin = "";
 			$registerEmail = "";
 		}
+		if(isset($_SESSION["publishCategorySelected"]))
+		{
+			$publishCategorySelected = $_SESSION["publishCategorySelected"];
+		}
+		else
+		{
+			$publishCategorySelected = "";			
+		}
 
-		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail));
+		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected));
 	}
 	else
 	{

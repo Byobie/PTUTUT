@@ -4,14 +4,35 @@
 
 	require("../class/publishVerify.class.php");
 	require("../class/imageVerify.class.php");
+	require("../class/sourceVerify.class.php");
 	require("../../model/class/makeDatabase.class.php");
 
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
-
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
 
-		if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true) 
+		if(isset($_SESSION["publishStepFour"]) && $_SESSION["publishStepFour"] === true) 
+		{
+
+			$sourceVerify = new sourceVerify($database->getDatabase());
+			$sourceVerify->assignDatas($_SESSION["publishSource"][0], $_SESSION["publishSource"][1], $_SESSION["publishSource"][2], $_SESSION["publishSource"][3], $_SESSION["publishSource"][4], $_SESSION["publishSource"][5]);
+
+			$result = $sourceVerify->checkSources();
+
+			if($result === true)
+			{
+				$_SESSION["publishSource"] = $sourceVerify->returnDatas();
+				header('Location: ../../model/script/createNew.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+			}
+			else
+			{
+				$_SESSION["access"] = false;
+				echo $result;
+				return;
+			}
+		}
+		elseif(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true) 
 		{
 			if($_SESSION["publishCategorySelected"] == "")
 			{
@@ -30,42 +51,43 @@
 				exit;
 			}
 		}
-		
-		elseif(isset($_SESSION["publishImageUploaded"]) && $_SESSION["publishImageUploaded"] === true)
+		elseif(isset($_SESSION["publishStepTwo"]) && $_SESSION["publishStepTwo"] === true)
 		{
-			unset($_SESSION["publishImageUploaded"]);
-			$imageVerify = new imageVerify("../../model/Uploads/", "../../model/temporaryUploads/", $_SESSION["publishImageName"]);
-			$result = $imageVerify->checkImage();
-
-			if($result === true)
+			if(isset($_SESSION["publishImageUploaded"]) && $_SESSION["publishImageUploaded"] === true)
 			{
-				$_SESSION["imagePublishMessage"] = "Your image has been uploaded.";
-				$_SESSION["imagePublishSuccess"] = true;
+				unset($_SESSION["publishImageUploaded"]);
+				$imageVerify = new imageVerify("../../model/Uploads/", "../../model/temporaryUploads/", $_SESSION["publishImageName"]);
+				$result = $imageVerify->checkImage();
+
+				if($result === true)
+				{
+					$_SESSION["imagePublishMessage"] = "Your image has been uploaded.";
+					$_SESSION["imagePublishSuccess"] = true;
+					$_SESSION["publishStepThree"] = true;
+					
+					header('Location: ../../model/script/createImage.php?selectedTheme='.$_GET["selectedTheme"]);
+					exit;
+				}
+				else
+				{
+					$_SESSION["imagePublishError"] = $result;
+
+					$_SESSION["access"] = false;
+					unset($_SESSION["access"]);
+					header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=5');
+					exit;
+				}
+			}
+			elseif (isset($_SESSION["publishImageSkip"]) && $_SESSION["publishImageSkip"] === true) 
+			{
+				unset($_SESSION["publishImageSkip"]);
 				$_SESSION["publishStepThree"] = true;
-				
-				header('Location: ../../model/script/createImage.php?selectedTheme='.$_GET["selectedTheme"]);
-				exit;
-			}
-			else
-			{
-				$_SESSION["imagePublishError"] = $result;
-
-				$_SESSION["access"] = false;
-				unset($_SESSION["access"]);
-				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=5');
+				$_SESSION["publishImageName"] = "";
+					
+				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=6');
 				exit;
 			}
 		}
-
-		elseif (isset($_SESSION["publishImageSkip"]) && $_SESSION["publishImageSkip"] === true) 
-		{
-			unset($_SESSION["publishImageSkip"]);
-			$_SESSION["publishStepThree"] = true;
-				
-			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=6');
-			exit;
-		}
-		
 		else
 		{
 			//THE PURPOSE OF REGISTER CLASS IS TO VERIFY DATAS AND TO RETURN TRUE AS RESULT IF ALL IS GOOD OR AN ERROR MESSAGE IF IT IS NOT.

@@ -171,6 +171,12 @@ html
 			color: white;
 			@extend %desktop_publish_step_three;
 		}
+
+		#publishFormFour
+		{
+			color: white;
+			@extend %desktop_publish_step_four;
+		}
 	}
 
 	footer

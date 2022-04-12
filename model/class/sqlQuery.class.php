@@ -18,20 +18,6 @@
 			return $result;
 		}
 
-		public function getCategory ($table, $fields)
-		{
-			$db = $this->dataBase;
-			$query = $db->prepare("SELECT $fields FROM $table WHERE type = 'category'");
-
-			$query->execute();
-
-			$data = $query->fetchAll();
-
-			$result = $this->organiseData($data);
-
-			return $result;
-		}
-
 		private function organiseData ($queryResult)
 		{
 			$rawData = [];

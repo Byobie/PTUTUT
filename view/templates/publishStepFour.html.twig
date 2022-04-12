@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+{{ include("head.html.twig") }}
+{% endblock %}
+	<body>
+{% block header %}
+{% if connexionStatut is same as(true) %}
+{{ include("header_connected.html.twig") }}
+{% else %}
+{{ include("header.html.twig") }}
+{% endif %}
+{% endblock %}
+{% block nav %}
+{% if connexionStatut is same as(true) %}
+{{ include("nav_connected.html.twig") }}
+{% else %}
+{{ include("nav.html.twig") }}
+{% endif %}
+{% endblock %}
+		<main>
+			<article id="publishFormFour">
+				<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=7" method="post">
+					<span style="text-align: center; margin: 11px 0px 22px 0px; font-style: italic;">You must provide one source at least. Titles must be ten characters long minimum.</span>
+					<div>
+						<span style="color: red; align-self: center; margin-top: 33px;">{{publishCategoryError}}</span>
+						<div>
+							<label for="sourceTitleOne">Source title 1 [MANDATORY] :</label>
+							<input type="text" name="sourceTitleOne" id="sourceTitleOne" required>
+							<label for="sourceUrlOne">URL 1 [MANDATORY] :</label>
+							<input type="text" name="sourceUrlOne" id="sourceUrlOne" required>
+						</div>
+						<div>
+							<label for="sourceTitleTwo">Source title 2 [OPTIONNAL] :</label>
+							<input type="text" name="sourceTitleTwo" id="sourceTitleTwo">
+							<label for="sourceUrl">URL 2 [OPTIONNAL] :</label>
+							<input type="text" name="sourceUrlTwo" id="sourceUrlTwo">
+						</div>
+						<div>
+							<label for="sourceTitleThree">Source title 3 [OPTIONNAL] :</label>
+							<input type="text" name="sourceTitleThree" id="sourceTitleThree">
+							<label for="sourceUrl">URL 3 [OPTIONNAL] :</label>
+							<input type="text" name="sourceUrlThree" id="sourceUrlThree">
+						</div>
+					</div>
+					<input type="submit" value="NEXT" name="submit">
+					<input type="hidden" name="formSent" value="6">
+					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=6">GO BACK</a>
+				</form>
+			</article>	
+		</main>	
+{% block footer %}
+{{ include("footer.html.twig") }}
+{% endblock %}
+	</body>
+</html>

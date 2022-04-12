@@ -1129,3 +1129,254 @@
 		}
 	}
 }
+
+%desktop_publish_step_four
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: calc(100vh - 154px);
+		width: calc(100vw - 300px);
+
+		div
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-content: center;
+
+			span 
+			{
+				margin-bottom: 33px;
+			}
+
+			div
+			{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-content: center;
+				margin: 22px;
+
+				label
+				{
+					margin-bottom: 11px;
+					margin-top: 22px;
+					font-size: 24px;
+				}
+
+				input
+				{
+					border: solid 2px black;
+					height: 44px;
+					width: 19vw;
+				}
+			}
+		}
+
+		input[type=submit]
+		{
+			margin-top: 44px;
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			border: none;
+			font-family: "roboto";
+			height: 44px;
+			font-size: 24px;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			margin-top: 11px;
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			border: none;			
+		}
+	}
+}
+
+%tablet_publish_step_four
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		width: calc(100vw - 264px);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+
+		div
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-content: center;
+			margin-top: -90px;
+
+			span 
+			{
+				margin-bottom: 33px;
+			}
+
+			div
+			{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-content: center;
+				margin: 11px;
+
+				label
+				{
+					margin-bottom: 11px;
+					margin-top: 22px;
+					font-size: 24px;
+				}
+
+				input
+				{
+					border: solid 2px black;
+					height: 44px;
+				}
+			}
+		}
+
+		input[type=submit]
+		{
+			margin-top: 44px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			height: 44px;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc(50vw + 7px);
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+			align-self: center;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			width: calc(50vw + 7px);
+			border: none;
+			align-self: center;
+			margin-bottom: 11px;
+		}
+	}
+}
+
+%mobile_publish_step_four
+{
+	form
+	{
+		font-family: "economica";
+		font-size: 24px;
+		width: 80vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+
+		div
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-content: center;
+			margin-top: -90px;
+
+			span 
+			{
+				margin-bottom: 33px;
+			}
+
+			div
+			{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-content: center;
+				margin: 11px;
+
+				label
+				{
+					margin-bottom: 11px;
+					margin-top: 22px;
+					font-size: 24px;
+				}
+
+				input
+				{
+					border: solid 2px black;
+					height: 44px;
+				}
+			}
+		}
+
+		input[type=submit]
+		{
+			margin-top: 44px;
+			margin-bottom: 11px;
+			font-weight: bold;
+			height: 44px;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorGreen;
+			width: calc(80vw - 22px);
+			border: none;
+			font-family: "roboto";
+			font-size: 24px;
+			align-self: center;
+		}
+
+		a
+		{
+			color: black;
+			text-decoration: none;
+			font-family: "roboto";
+			height: 34px;
+			text-align: center;
+			padding-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 2px 2px 3px black;
+			background-color: $buttonColorRed;
+			width: calc(80vw - 22px);
+			border: none;
+			align-self: center;
+			margin-bottom: 11px;
+		}
+	}
+}

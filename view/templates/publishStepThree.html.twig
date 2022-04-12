@@ -24,9 +24,9 @@
 					<span style="color: red; align-self: center; margin-top: 33px;">{{publishCategoryError}}</span>
 					<label for="categoryPublish">Choose a category :</label>
 					<select name="categoryPublish">
-					    <option value="">--Please choose an option--</option>
+					    <option value="" selected disabled hidden>--Please choose an option--</option>
 					    {% for key, category in publishSections %}
-					    <option value="{{key}}">{{category}}</option>
+					    <option value="{{key}}" {% if key == publishCategorySelected %}selected{% endif %}>{{category}}</option>
 						{% endfor %}
 					</select>
 					<input type="submit" value="NEXT" name="submit">

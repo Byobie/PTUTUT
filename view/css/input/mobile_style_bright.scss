@@ -182,6 +182,12 @@ html
 			color: black;
 			@extend %mobile_publish_step_three;
 		}
+
+		#publishFormFour
+		{
+			color: black;
+			@extend %mobile_publish_step_four;
+		}
 	}
 
 	footer
