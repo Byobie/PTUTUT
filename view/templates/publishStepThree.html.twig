@@ -19,21 +19,23 @@
 {% endif %}
 {% endblock %}
 		<main>
-			<article id="publishFormThree">
-				<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=6" method="post">
-					<span style="color: red; align-self: center; margin-top: 33px;">{{publishCategoryError}}</span>
-					<label for="categoryPublish">Choose a category :</label>
-					<select name="categoryPublish">
-					    <option value="" selected disabled hidden>--Please choose an option--</option>
-					    {% for key, category in publishSections %}
-					    <option value="{{key}}" {% if key == publishCategorySelected %}selected{% endif %}>{{category}}</option>
-						{% endfor %}
-					</select>
-					<input type="submit" value="NEXT" name="submit">
-					<input type="hidden" name="formSent" value="5">
-					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=5">GO BACK</a>
-				</form>
-			</article>	
+			<section>
+				<article id="publishFormThree">
+					<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=6" method="post">
+						<span style="color: red; align-self: center; margin-top: 33px;">{{publishCategoryError}}</span>
+						<label for="categoryPublish">Choose a category :</label>
+						<select name="categoryPublish">
+						    <option value="" selected disabled hidden>--Please choose an option--</option>
+						    {% for key, category in publishSections %}
+						    <option value="{{key}}" {% if key == publishCategorySelected %}selected{% endif %}>{{category}}</option>
+							{% endfor %}
+						</select>
+						<input type="submit" value="NEXT" name="submit">
+						<input type="hidden" name="formSent" value="5">
+						<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=5">GO BACK</a>
+					</form>
+				</article>
+			</section>	
 		</main>	
 {% block footer %}
 {{ include("footer.html.twig") }}

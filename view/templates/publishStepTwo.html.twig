@@ -19,19 +19,18 @@
 {% endif %}
 {% endblock %}
 		<main>
-			<article id="publishFormTwo">
-				<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=5" method="post" enctype="multipart/form-data">
-					<span style="color: {% if imagePublishSuccess is same as(true) %}green{% else %}red{% endif %}; align-self: center;">{% if imagePublishSuccess is same as(true) %}{{imagePublishMessage}}{% else %}{{imagePublishError}}{% endif %}</span>	
-					<label id=fileToUpload>[OPTIONNAL] Add an image :</label>
-					<input type="file" name="fileToUpload" id="fileToUpload" value="CHOOSE A FILE">
-					<input type="submit" value="NEXT" name="submit">
-					<input type="hidden" name="formSent" value="4">
-					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=4">GO BACK</a>
-				</form>
-
-
-			
-			</article>	
+			<section>
+				<article id="publishFormTwo">
+					<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=5" method="post" enctype="multipart/form-data">
+						<span style="color: {% if imagePublishSuccess is same as(true) %}green{% else %}red{% endif %}; align-self: center;">{% if imagePublishSuccess is same as(true) %}{{imagePublishMessage}}{% else %}{{imagePublishError}}{% endif %}</span>	
+						<label id=fileToUpload>[OPTIONNAL] Add an image :</label>
+						<input type="file" name="fileToUpload" id="fileToUpload" value="CHOOSE A FILE">
+						<input type="submit" value="NEXT" name="submit">
+						<input type="hidden" name="formSent" value="4">
+						<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=4">GO BACK</a>
+					</form>
+				</article>
+			</section>	
 		</main>	
 {% block footer %}
 {{ include("footer.html.twig") }}

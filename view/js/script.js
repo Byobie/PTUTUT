@@ -14,7 +14,7 @@ $(document).ready(function(){
 	function showNav()
 	{
 		$("nav").css({"display": "block"});
-		$("#registeForm").css({"margin-left": "264px"});		
+		$("#registerForm").css({"margin-left": "264px"});		
 		$("#connexionForm").css({"margin-left": "264px"});	
 		$("#publishForm").css({"margin-left": "264px"});	
 		$("#publishFormTwo").css({"margin-left": "264px"});

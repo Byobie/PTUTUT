@@ -19,35 +19,37 @@
 {% endif %}
 {% endblock %}
 		<main>
-			<article id="publishFormFour">
-				<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=7" method="post">
-					<span style="text-align: center; margin: 11px 0px 22px 0px; font-style: italic;">You must provide one source at least. Titles must be ten characters long minimum.</span>
-					<div>
-						<span style="color: red; align-self: center; margin-top: 33px;">{{publishCategoryError}}</span>
+			<section>
+				<article id="publishFormFour">
+					<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=7" method="post">
+						<span style="text-align: center; margin: 11px 0px 22px 0px; font-style: italic;">You must provide one source at least. Titles must be ten characters long minimum.</span>
 						<div>
-							<label for="sourceTitleOne">Source title 1 [MANDATORY] :</label>
-							<input type="text" name="sourceTitleOne" id="sourceTitleOne" required>
-							<label for="sourceUrlOne">URL 1 [MANDATORY] :</label>
-							<input type="text" name="sourceUrlOne" id="sourceUrlOne" required>
+							<span style="color: red; align-self: center; margin-top: 33px;">{{publishCategoryError}}</span>
+							<div>
+								<label for="sourceTitleOne">Source title 1 [MANDATORY] :</label>
+								<input type="text" name="sourceTitleOne" id="sourceTitleOne" required>
+								<label for="sourceUrlOne">URL 1 [MANDATORY] :</label>
+								<input type="text" name="sourceUrlOne" id="sourceUrlOne" required>
+							</div>
+							<div>
+								<label for="sourceTitleTwo">Source title 2 [OPTIONNAL] :</label>
+								<input type="text" name="sourceTitleTwo" id="sourceTitleTwo">
+								<label for="sourceUrl">URL 2 [OPTIONNAL] :</label>
+								<input type="text" name="sourceUrlTwo" id="sourceUrlTwo">
+							</div>
+							<div>
+								<label for="sourceTitleThree">Source title 3 [OPTIONNAL] :</label>
+								<input type="text" name="sourceTitleThree" id="sourceTitleThree">
+								<label for="sourceUrl">URL 3 [OPTIONNAL] :</label>
+								<input type="text" name="sourceUrlThree" id="sourceUrlThree">
+							</div>
 						</div>
-						<div>
-							<label for="sourceTitleTwo">Source title 2 [OPTIONNAL] :</label>
-							<input type="text" name="sourceTitleTwo" id="sourceTitleTwo">
-							<label for="sourceUrl">URL 2 [OPTIONNAL] :</label>
-							<input type="text" name="sourceUrlTwo" id="sourceUrlTwo">
-						</div>
-						<div>
-							<label for="sourceTitleThree">Source title 3 [OPTIONNAL] :</label>
-							<input type="text" name="sourceTitleThree" id="sourceTitleThree">
-							<label for="sourceUrl">URL 3 [OPTIONNAL] :</label>
-							<input type="text" name="sourceUrlThree" id="sourceUrlThree">
-						</div>
-					</div>
-					<input type="submit" value="NEXT" name="submit">
-					<input type="hidden" name="formSent" value="6">
-					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=6">GO BACK</a>
-				</form>
-			</article>	
+						<input type="submit" value="NEXT" name="submit">
+						<input type="hidden" name="formSent" value="6">
+						<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=6">GO BACK</a>
+					</form>
+				</article>	
+			</section>
 		</main>	
 {% block footer %}
 {{ include("footer.html.twig") }}

@@ -4,8 +4,8 @@
 		<title>{{site["main_page"]}}</title>
 		<link rel="stylesheet" type="text/css" href="../../view/css/reset.css">
 		<link id="desktop" rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/desktop_style_dark.css {% else %} ../../view/css/output/desktop_style_bright.css {% endif %}">
-		<link id="tablet" rel="stylesheet" media="screen and (min-width: 590px) and (max-width: 1023px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/tablet_style_dark.css {% else %} ../../view/css/output/tablet_style_bright.css {% endif %}">
-		<link id="mobile" rel="stylesheet" media="screen and (max-width: 589px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/mobile_style_dark.css {% else %} ../../view/css/output/mobile_style_bright.css {% endif %}">
+		<link id="tablet" rel="stylesheet" media="screen and (min-width: 590px) and (max-width: 1024px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/tablet_style_dark.css {% else %} ../../view/css/output/tablet_style_bright.css {% endif %}">
+		<link id="mobile" rel="stylesheet" media="screen and (max-width: 590px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/mobile_style_dark.css {% else %} ../../view/css/output/mobile_style_bright.css {% endif %}">
 		<script type="text/javascript" src="../../view/js/jquery.js"></script> 
 		<script type="text/javascript" src="../../view/js/script.js"></script> 
 		{% if publishForm is same as(true) %}<script type="text/javascript" src="../../view/js/scriptPublish.js"></script> {% endif %}

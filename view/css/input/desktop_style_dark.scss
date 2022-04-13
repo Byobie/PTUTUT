@@ -3,6 +3,10 @@
 html
 {
 	overflow-x: hidden;
+	::-webkit-scrollbar 
+	{
+		display: none;
+	}
 
 	body
 	{
@@ -115,6 +119,17 @@ html
 	main
 	{
 		@extend %mainDesktop;
+
+		section#viewMoreBox
+		{
+			width: calc(100vw - 300px);
+
+			span#viewMore
+			{
+				width: 300px;
+			}
+		}
+
 
 		article.news
 		{

@@ -19,20 +19,22 @@
 {% endif %}
 {% endblock %}
 		<main>
-			<article id="publishForm">
-				<form method="post" action="../../index.php?theme={{theme}}&page_number=4">
-					<h3>STEP 1/3 : REDACTION</h3>
-					<label id="title">TITLE :</label>
-					<input type="text" name="title" id="title_form" maxlength=100 value="{{title}}" required>
-					<span id="titleSpan">0/100</span>
-					<label id="login">CONTENT :</label>
-					<textarea name="content" id="content_form" maxlength=500 required>{{content}}</textarea>
-					<span id="contentSpan">0/500</span>
-					<input type="submit" name="submit" value="NEXT">
-					<input type="hidden" name="formSent" value="3">
-					<span style="color: red; text-align: center; margin-top: 33px;">{{registerError}}</span>
-				</form>
-			</article>		
+			<section>
+				<article id="publishForm">
+					<form method="post" action="../../index.php?theme={{theme}}&page_number=4">
+						<h3>STEP 1/3 : REDACTION</h3>
+						<label id="title">TITLE :</label>
+						<input type="text" name="title" id="title_form" maxlength=100 value="{{title}}" required>
+						<span id="titleSpan">0/100</span>
+						<label id="login">CONTENT :</label>
+						<textarea name="content" id="content_form" maxlength=500 required>{{content}}</textarea>
+						<span id="contentSpan">0/500</span>
+						<input type="submit" name="submit" value="NEXT">
+						<input type="hidden" name="formSent" value="3">
+						<span style="color: red; text-align: center; margin-top: 33px;">{{registerError}}</span>
+					</form>
+				</article>	
+			</section>	
 		</main>
 {% block footer %}
 {{ include("footer.html.twig") }}

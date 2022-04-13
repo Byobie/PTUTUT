@@ -3,6 +3,10 @@
 html
 {
 	overflow-x: hidden;
+	::-webkit-scrollbar 
+	{
+		display: none;
+	}
 
 	body
 	{
@@ -114,6 +118,16 @@ html
 	{
 		@extend %mainTabletMobile;
 
+		section#viewMoreBox
+		{
+			width: 100vw;
+
+			span#viewMore
+			{
+				width: calc(100% - 66px);
+			}
+		}
+
 		article.news
 		{
 			@include article (11px, calc(100vw - 22px), $borderBlack, $themeColorDark3);
@@ -138,11 +152,6 @@ html
 				box-shadow: 2px 2px 3px black;
 				@include make_button($buttonColorOrange, calc(100% - 44px), 22px, $itemFont, 33px, $colorFontBlack);
 			}
-		}
-
-		span#viewMore
-		{
-			width: calc(100vw - 66px);
 		}
 
 		#registerForm

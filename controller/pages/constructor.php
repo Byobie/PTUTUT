@@ -19,7 +19,7 @@
 		}
 		else
 		{
-			$displayNews = $dbQuery->getNews($_SESSION["pagePosition"], 0, 3);		
+			$displayNews = $dbQuery->getNewsByCategory($_SESSION["pagePosition"], 0, 3);		
 		}
 
 
