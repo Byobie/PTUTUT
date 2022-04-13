@@ -4,12 +4,27 @@
 	{
 
 		require("../include/init_twig.php");
-		require("../../model/class/sqlQuery.class.php");
+		require("../../model/class/sqlQuery.class.php");		
 
 		//SQLQUERY IS AN EXTENDED CLASS, WHICH GENERATE A PDO AND ASSOCIATE SOME REQUEST.
 
 		$dbQuery = new sqlQuery("99percents", "localhost", "utf8", 3308, "root", "");
 		$table = $dbQuery->getDataWithoutCondition("site", "reference, value");
+		$publishSections = $dbQuery->getDataWithoutCondition("category", "id_category, name_category");
+		$browseCategory = $dbQuery->getDataWithoutCondition("category", "id_category, image_category");
+
+		if($_SESSION["pagePosition"] == "FRESH")
+		{
+			$displayNews = $dbQuery->getAllNews("news", "*", 0, 3);			
+		}
+		else
+		{
+			$displayNews = $dbQuery->getNews($_SESSION["pagePosition"], 0, 3);		
+		}
+
+
+		$usersArray = $dbQuery->getDataWithoutCondition("user", "id_user, login_user");
+		ksort($usersArray);
 
 		if(isset($_GET["selectedTheme"]))
 		{
@@ -119,15 +134,6 @@
 			$imagePublishSuccess = false;
 		}
 
-		if(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true)
-		{
-			$publishSections = $dbQuery->getDataWithoutCondition("category", "id_category, name_category");
-		}
-		else
-		{
-			$publishSections = "";
-		}
-
 		if(isset($_SESSION["publishCategoryError"]))
 		{
 			$publishCategoryError = $_SESSION["publishCategoryError"];
@@ -165,7 +171,7 @@
 			$publishCategorySelected = "";			
 		}
 
-		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected));
+		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray));
 	}
 	else
 	{

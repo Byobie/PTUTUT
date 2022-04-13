@@ -153,6 +153,7 @@
 		border-bottom: $border;
 		border-top: $border;
 		font-weight: $weight;
+		overflow-wrap: break-word;
 					
 		img
 		{
@@ -295,8 +296,8 @@
 		{
 			img
 			{
-				width: 44px;
-				height: 44px;
+				width: 46px;
+				height: 46px;
 			}
 		}
 
@@ -331,26 +332,82 @@
 
 %mainDesktop
 {
-	width: calc(100vw - 300px);
-	height: calc(100vh - 154px);
-	margin: 77px 0px 0px 300px;
-	overflow-x: hidden;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
 	justify-content: center;
+	margin: 77px 0px 99px 300px;
+	height: 100%;
+	width: calc(100vw - 300px);
+
+	section
+	{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 22px;
+
+		article:last-child
+		{
+			margin-bottom: 0px;
+		}
+	}
+
+	span#viewMore
+	{
+		background-color: $buttonColorWhite;
+		align-self: center;
+		height: 38px;
+		padding-top: 6px;
+		width: 300px;
+		text-align: center;
+		font-family: $itemFont;
+		font-size: 33px;
+		font-weight: bold;
+		color: $colorFontBlack;
+		text-decoration: none;
+		box-shadow: 2px 2px 3px black;
+	}
 }
 
 %mainTabletMobile
 {
 	width: 100vw;
-	height: calc(100vh - 110px); 
-	margin: 55px 0px 0px 0px;
-	overflow-x: hidden;
+	height: 100%; 
+	margin: 55px 0px 77px 0px;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
 	justify-content: center;
+
+	section
+	{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 22px;
+
+		article:last-child
+		{
+			margin-bottom: 0px;
+		}
+	}
+
+	span#viewMore
+	{
+		background-color: $buttonColorWhite;
+		align-self: center;
+		height: 38px;
+		padding-top: 6px;
+		width: 374px;
+		text-align: center;
+		font-family: $itemFont;
+		font-size: 33px;
+		font-weight: bold;
+		color: $colorFontBlack;
+		text-decoration: none;
+		box-shadow: 2px 2px 3px black;
+	}
 }
 
 %footerDesktop

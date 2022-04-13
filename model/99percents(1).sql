@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  mar. 12 avr. 2022 à 16:58
+-- Généré le :  mer. 13 avr. 2022 à 14:03
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -33,16 +33,18 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `reference_category` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `name_category` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `image_category` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `category`
 --
 
-INSERT INTO `category` (`id_category`, `reference_category`, `name_category`) VALUES
-(1, 'category_fresh', 'FRESH'),
-(2, 'category_politics', 'POLITICS');
+INSERT INTO `category` (`id_category`, `reference_category`, `name_category`, `image_category`) VALUES
+(2, 'category_politics', 'POLITICS', '../../view/image/politics.png'),
+(3, 'category_animals', 'ANIMALS', '../../view/image/paw.png'),
+(4, 'category_satirical', 'SATIRICAL', '../../view/image/pitre.png');
 
 -- --------------------------------------------------------
 
@@ -73,9 +75,9 @@ CREATE TABLE IF NOT EXISTS `news` (
 --
 
 INSERT INTO `news` (`id_news`, `id_category_news`, `id_user_news`, `date_news`, `title_news`, `content_news`, `image_news`, `sourceOneTitle_news`, `sourceOneUrl_news`, `sourceTwoTitle_news`, `sourceTwoUrl_news`, `sourceThreeTitle_news`, `sourceThreeUrl_news`) VALUES
-(3, 1, 21, '12/04/2022', 'Ddddddddddddddddddd', 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '../model/Uploads/image_news.png', '0123456789yyy', 'https://9gag.com/', '', '', '', ''),
-(4, 2, 21, '12/04/2022', 'Gggggggggggggggg', 'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', '../model/Uploads/', '0123456789', 'https://9gag.com/', '', '', '', ''),
-(5, 1, 21, '12/04/2022', 'Sssssssssssssssss', 'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', '../model/Uploads/', '0123456789', 'https://9gag.com/', '', '', '', '');
+(3, 2, 21, '12/04/2022', 'Ddddddddddddddddddd', 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '../model/Uploads/image_news.png', '0123456789yyy', 'https://9gag.com/', '', '', '', ''),
+(4, 3, 21, '12/04/2022', 'Gggggggggggggggg', 'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', '../model/Uploads/', '0123456789', 'https://9gag.com/', '', '', '', ''),
+(5, 4, 21, '12/04/2022', 'Sssssssssssssssss', 'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', '../model/Uploads/', '0123456789', 'https://9gag.com/', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `site` (
   `type` enum('image','text','category') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `value` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_site`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `site`
@@ -121,7 +123,8 @@ INSERT INTO `site` (`id_site`, `reference`, `type`, `value`) VALUES
 (26, 'repeatPassword', 'text', 'REPEAT PASSWORD :'),
 (27, 'publishStepOne', 'text', 'STEP 1/3 : REDACTION'),
 (28, 'publishTitle', 'text', 'TITLE :'),
-(29, 'publishContent', 'text', 'CONTENT :');
+(29, 'publishContent', 'text', 'CONTENT :'),
+(30, 'button_viewMore', 'text', 'VIEW MORE');
 
 -- --------------------------------------------------------
 

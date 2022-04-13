@@ -63,6 +63,20 @@
 			$query->bindParam(":urlThree", $this->newsSources[5]);
 			$query->execute();
 		}
+
+		public function getNews($categoryName, $lowLimit, $highLimit)
+		{
+			$db = $this->database;
+
+			$query = $db->prepare("SELECT * FROM news LIMIT :low, :high INNER JOIN category ON news.id_category_news = category.id_category WHERE category.name_category = :categoryName");
+			$query->bindParam(":categoryName", $categoryName);
+			$query->bindParam(":low", $lowLimit);
+			$query->bindParam(":high", $highLimit);
+			$query->execute();
+			$query->fetchAll();
+
+			var_dump($query);
+		}
 	}
 
 ?>

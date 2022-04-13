@@ -19,96 +19,29 @@
 {% endif %}
 {% endblock %}
 		<main>
-			<article class="news">
-					<div>
-						<a href=""><h2>AUTHOR</h2></a>
+			<section>
+			{% for key, currentNew in displayNews %}
+				<article class="news">
 						<div>
-							<span>01/01/1900</span>
-							<h4>Politics</h4>
+							<a href=""><h2>{{usersArray[currentNew["id_user_news"]]}}</h2></a>
+							<div>
+								<span>{{currentNew["date_news"]}}</span>
+								<h4>{{publishSections[currentNew["id_category_news"]]}}</h4>
+							</div>
 						</div>
-					</div>
-					<div>
-						<h3>News title</h3>
-					</div>
-					<div>
-						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-					<div>
-						<a href=""><h4>SOURCES</h4></a>
-					</div>
-			</article>
-			<article class="news">
-					<div>
-						<a href=""><h2>AUTHOR</h2></a>
 						<div>
-							<span>01/01/1900</span>
-							<h4>Politics</h4>
+							<h3>{{currentNew["title_news"]}}</h3>
 						</div>
-					</div>
-					<div>
-						<h3>News title</h3>
-					</div>
-					<div>
-						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-					<div>
-						<a href=""><h4>SOURCES</h4></a>
-					</div>
-			</article>
-			<article class="news">
-					<div>
-						<a href=""><h2>AUTHOR</h2></a>
 						<div>
-							<span>01/01/1900</span>
-							<h4>Politics</h4>
+							<p>{% if currentNew["image_news"] is same as("../model/Uploads/") %} {% else %} <img src="../{{currentNew['image_news']}}" alt="image de la nouvelle"></img> {% endif %}{{currentNew["content_news"]}}</p>
 						</div>
-					</div>
-					<div>
-						<h3>News title</h3>
-					</div>
-					<div>
-						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-					<div>
-						<a href=""><h4>SOURCES</h4></a>
-					</div>
-			</article>
-			<article class="news">
-					<div>
-						<a href=""><h2>AUTHOR</h2></a>
 						<div>
-							<span>01/01/1900</span>
-							<h4>Politics</h4>
+							<a href=""><h4>SOURCES</h4></a>
 						</div>
-					</div>
-					<div>
-						<h3>News title</h3>
-					</div>
-					<div>
-						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-					<div>
-						<a href=""><h4>SOURCES</h4></a>
-					</div>
-			</article>
-			<article class="news">
-					<div>
-						<a href=""><h2>AUTHOR</h2></a>
-						<div>
-							<span>01/01/1900</span>
-							<h4>Politics</h4>
-						</div>
-					</div>
-					<div>
-						<h3>News title</h3>
-					</div>
-					<div>
-						<p><img src="../../view/image/image_news.png" alt="image de la nouvelle"></img>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-					<div>
-						<a href=""><h4>SOURCES</h4></a>
-					</div>
-			</article>			
+				</article>
+			{% endfor %}
+			</section>
+			<span id="viewMore">{{site["button_viewMore"]}}</span>
 		</main>
 {% block footer %}
 {{ include("footer.html.twig") }}

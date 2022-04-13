@@ -153,6 +153,11 @@ html
 			}
 		}
 
+		span#viewMore
+		{
+			width: calc(100vw - 66px);
+		}
+
 		#registerForm
 		{
 			color: black;

@@ -18,6 +18,33 @@
 			return $result;
 		}
 
+		public function getNewsByCategory($categoryName, $lowLimit, $highLimit)
+		{
+			$db = $this->dataBase;
+
+			$query = $db->prepare("SELECT news.* FROM news INNER JOIN category ON news.id_category_news = category.id_category WHERE category.name_category = :categoryName LIMIT :low, :high");
+			$query->bindParam(":categoryName", $categoryName);
+			$query->bindParam(":low", $lowLimit);
+			$query->bindParam(":high", $highLimit);
+			$query->execute();
+			$datas = $query->fetchAll();
+
+			return $datas;
+		}
+
+		public function getAllNews ($table, $fields, $lowLimit, $highLimit)
+		{
+			$db = $this->dataBase;
+			$query = $db->prepare("SELECT $fields FROM $table LIMIT :low, :high");
+			$query->bindParam(":low", $lowLimit);
+			$query->bindParam(":high", $highLimit);
+			$query->execute();
+
+			$data = $query->fetchAll();
+
+			return $data;
+		}
+
 		private function organiseData ($queryResult)
 		{
 			$rawData = [];

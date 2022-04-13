@@ -8,11 +8,6 @@
 
 		$_SESSION["accessConstructor"] = true;
 
-		if(isset($_SESSION["publishForm"]) && $_SESSION["publishForm"] == true)
-		{
-			unset($_SESSION["publishForm"]);
-		}
-
 		$_SESSION["pagePosition"] = "FRESH";
 		$template = "main_page.html.twig";
 
