@@ -45,7 +45,7 @@
 		{
 			if (!empty($username))
 			{
-				if(strlen($username) < 10)
+				if(strlen($username) <= 10)
 				{
 					if(preg_match("~[a-zA-Z_0-9]+~", $username))
 					{
@@ -92,7 +92,7 @@
 			{
 				if($password == $confirmPassword)
 				{
-					if(strlen($password) > 11)
+					if(strlen($password) >= 12)
 					{
 						if(preg_match("~[a-z]+~", $password) && preg_match("~[A-Z]+~", $password) && preg_match("~[0-9]+~", $password) && preg_match("~[^A-Za-z0-9]+~", $password))
 						{

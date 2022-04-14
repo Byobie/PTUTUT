@@ -142,7 +142,7 @@ html
 
 			div:nth-child(2)
 			{
-				@include second_child (100%, 44px, $colorFontWhite, 33px, $titleFont, 6px 0px 0px 22px);
+				@include second_child (100%, auto, $colorFontWhite, 33px, $titleFont, 6px 22px 6px 22px);
 			}
 
 			div:nth-child(3)

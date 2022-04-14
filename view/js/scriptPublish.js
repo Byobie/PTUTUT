@@ -13,14 +13,20 @@ $(document).ready(function(){
 	function titleLength (element)
 	{
 		let title = $(element).val();
-		let lengthTitle = title.length;
-		$("#titleSpan").text(lengthTitle+"/100");
+		let titleWithoutSpace = title.replace(/ /g,'');
+		let limit = 75 + (title.length - titleWithoutSpace.length)
+		let lengthTitle = titleWithoutSpace.length;
+		$("#title_form").attr("maxlength", limit)
+		$("#titleSpan").text(lengthTitle+"/75");
 	}
 
 	function contentLength (element)
 	{
 		let content = $(element).val();
-		let lengthContent = content.length;
+		let contentWithoutSpace = content.replace(/ /g,'');
+		let limit = 500 + (content.length - contentWithoutSpace.length)
+		let lengthContent = contentWithoutSpace.length;
+		$("#content_form").attr("maxlength", limit)
 		$("#contentSpan").text(lengthContent+"/500");
 	}
 

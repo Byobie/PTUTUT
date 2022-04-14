@@ -96,6 +96,11 @@ switch ($pageNumber)
 			unset($_SESSION["publishShortcut"]);
 		}	
 
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			unset($_SESSION["publishSourceError"]);
+		}
+
 		break;
 
 	case 1 :
@@ -174,6 +179,11 @@ switch ($pageNumber)
 		{
 			unset($_SESSION["publishSource"]);
 		}	
+
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			unset($_SESSION["publishSourceError"]);
+		}
 
 		break;	
 
@@ -259,6 +269,11 @@ switch ($pageNumber)
 			unset($_SESSION["publishSource"]);
 		}
 
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			unset($_SESSION["publishSourceError"]);
+		}
+
 		break;	
 
 	case 3 :
@@ -328,6 +343,11 @@ switch ($pageNumber)
 			unset($_SESSION["publishSource"]);
 		}	
 
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			unset($_SESSION["publishSourceError"]);
+		}
+
 		break;
 
 	case 4 :
@@ -357,9 +377,9 @@ switch ($pageNumber)
 			unset($_SESSION["publishStepFour"]);
 		}
 
-		if(isset($_SESSION["publishSource"]))
+		if(isset($_SESSION["publishSourceError"]))
 		{
-			unset($_SESSION["publishSource"]);
+			unset($_SESSION["publishSourceError"]);
 		}
 
 		break;
@@ -385,12 +405,12 @@ switch ($pageNumber)
 		{
 			unset($_SESSION["publishCategoryError"]);
 		}
-
-		if(isset($_SESSION["publishSource"]))
-		{
-			unset($_SESSION["publishSource"]);
-		}
 	
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			unset($_SESSION["publishSourceError"]);
+		}
+
 		break;
 
 	case 6 :
@@ -410,10 +430,10 @@ switch ($pageNumber)
 			unset($_SESSION["publishError"]);
 		}
 
-		if(isset($_SESSION["publishSource"]))
+		if(isset($_SESSION["publishSourceError"]))
 		{
-			unset($_SESSION["publishSource"]);
-		}	
+			unset($_SESSION["publishSourceError"]);
+		}
 
 		break;
 
@@ -526,6 +546,11 @@ switch ($pageNumber)
 		if(isset($_SESSION["publishSource"]))
 		{
 			unset($_SESSION["publishSource"]);
+		}
+
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			unset($_SESSION["publishSourceError"]);
 		}
 
 		break;

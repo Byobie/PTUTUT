@@ -170,8 +170,24 @@
 		{
 			$publishCategorySelected = "";			
 		}
+		if(isset($_SESSION["publishSourceError"]))
+		{
+			$publishSourceError = $_SESSION["publishSourceError"];
+		}
+		else
+		{
+			$publishSourceError = "";			
+		}
+		if(isset($_SESSION["publishSource"]))
+		{
+			$publishSource = $_SESSION["publishSource"];
+		}
+		else
+		{
+			$publishSource = "";			
+		}
 
-		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray));
+		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray, 'publishSourceError' => $publishSourceError, 'publishSource' => $publishSource));
 	}
 	else
 	{

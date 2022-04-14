@@ -27,7 +27,7 @@
 
 		private function checkTitle ($title)
 		{
-			if(strlen($title) > 10)
+			if(strlen($title) >= 10)
 			{
 				if(preg_match("~[a-zA-Z_0-9.-:!?,]+~", $title))
 				{
@@ -49,7 +49,7 @@
 
 		private function checkContent ($content)
 		{
-			if(strlen($content) > 200)
+			if(strlen($content) >= 200)
 			{
 				$result = true;
 				return $result;

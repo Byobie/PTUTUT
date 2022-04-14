@@ -28,8 +28,9 @@
 			else
 			{
 				$_SESSION["access"] = false;
-				echo $result;
-				return;
+				$_SESSION["publishSourceError"] = $result;
+				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=7');
+				exit;
 			}
 		}
 		elseif(isset($_SESSION["publishStepThree"]) && $_SESSION["publishStepThree"] === true) 
