@@ -22,6 +22,14 @@
 			$displayNews = $dbQuery->getNewsByCategory($_SESSION["pagePosition"], 0, 3);		
 		}
 
+		if(isset($_SESSION["adminPosition"]) && $_SESSION["adminPosition"] == 2)
+		{
+			$displayUsers = $dbQuery->getUsersList("user", "*");		
+		}
+		else
+		{
+			$displayUsers = "";
+		}
 
 		$usersArray = $dbQuery->getDataWithoutCondition("user", "id_user, login_user");
 		ksort($usersArray);
@@ -187,7 +195,34 @@
 			$publishSource = "";			
 		}
 
-		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray, 'publishSourceError' => $publishSourceError, 'publishSource' => $publishSource));
+		if(isset($_SESSION["typeUser"]))
+		{
+			$typeUser = $_SESSION["typeUser"];
+		}
+		else
+		{
+			$typeUser = "";
+		}
+		if(isset($_SESSION["adminColor"]) && $_SESSION["adminColor"] === true)
+		{
+			$adminColor = true;
+		}
+		else
+		{
+			$adminColor = false;
+		}
+
+		if(isset($_SESSION["adminActionId_User"]))
+		{
+			$adminActionId_User = $_SESSION["adminActionId_User"];
+			var_dump($adminActionId_User);
+		}
+		else
+		{
+			$adminActionId_User = "";
+		}
+
+		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray, 'publishSourceError' => $publishSourceError, 'publishSource' => $publishSource, 'typeUser' => $typeUser, 'displayUsers' => $displayUsers, 'adminColor' => $adminColor, 'adminActionId_User' => $adminActionId_User));
 	}
 	else
 	{

@@ -369,11 +369,104 @@
 			margin-top: 11px;
 		}
 	}
+
+	section#sectionAdmin_one
+	{
+		width: calc(100vw - 300px);
+		height: calc(100vh - 154px);
+		margin: 77px 0px 0px 300px;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		span#adminWelcome
+		{
+			align-self: center;
+			margin-bottom: 44px;
+			font-size: 28px;
+			font-style: italic;
+			font-family: $titleFont;
+		}
+
+		article.adminArticle
+		{
+			box-shadow: 2px 2px 3px black;
+			align-self: center;
+			@include make_button($buttonColorWhite, 300px, 11px 0px 0px 0px, $itemFont, 33px, $colorFontBlack);
+		}
+	}
+
+	section#sectionAdmin_ManageUsers
+	{
+		width: calc(100vw - 300px);
+		height: calc(100vh - 154px);
+		margin: 77px 0px 0px 300px;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		span#adminWelcome
+		{
+			align-self: center;
+			margin-bottom: 44px;
+			font-size: 28px;
+			font-style: italic;
+			font-family: $titleFont;
+			color: inherit;
+		}
+
+		span.displayUser
+		{
+			align-self: flex-start;
+			margin-left: 44px;
+			margin-bottom: 11px;
+			font-size: 24px;
+			font-family: $titleFont;
+
+			span.infoUser
+			{
+				font-weight: bold;
+			}
+		}
+
+		article.displayOptionsManageUser
+		{
+			margin: 0px 0px 0px 33px;
+			display: flex;
+			flex-direction: row;
+
+			a
+			{
+				box-shadow: 2px 2px 3px black;
+				background-color: $buttonColorWhite;
+				height: 24px;
+				width: 100px;
+				text-align: center;
+				margin: 0px 0px 22px 11px;
+				font-family: $itemFont;
+				font-size: 24px;
+				font-weight: bold;
+				color: black;
+				text-decoration: none;
+			}
+		}
+
+		article.adminArticle
+		{
+			box-shadow: 2px 2px 3px black;
+			align-self: center;
+			@include make_button($buttonColorRed, 300px, 11px 0px 0px 0px, $itemFont, 33px, $colorFontBlack);
+		}
+	}
+
 }
 
 %mainTabletMobile
 {
-
 	section
 	{
 		width: 100vw;
@@ -411,6 +504,103 @@
 			margin-top: 11px;
 		}
 	}
+
+	section#sectionAdmin_one
+	{
+		width: auto;
+		height: calc(100vh - 110px); 
+		margin: 55px 0px 0px 0px;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+
+		span#adminWelcome
+		{
+			margin-bottom: 44px;
+			font-size: 28px;
+			font-style: italic;
+			font-family: $titleFont;
+		}
+
+		article.adminArticle
+		{
+			box-shadow: 2px 2px 3px black;
+			@include make_button($buttonColorWhite, 300px, 11px 0px 0px 0px, $itemFont, 33px, $colorFontBlack);
+		}
+	}
+
+	section#sectionAdmin_ManageUsers
+	{
+		width: auto;
+		height: calc(100vh - 110px); 
+		margin: 55px 0px 0px 0px;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+
+		span#adminWelcome
+		{
+			align-self: center;
+			margin-bottom: 44px;
+			font-size: 28px;
+			font-style: italic;
+			font-family: $titleFont;
+			color: inherit;
+			margin-left: 11px;
+			margin-right: 11px;
+		}
+
+		span.displayUser
+		{
+			align-self: flex-start;
+			margin-left: 44px;
+			margin-right: 33px;
+			margin-bottom: 11px;
+			font-size: 24px;
+			font-family: $titleFont;
+
+			span.infoUser
+			{
+				font-weight: bold;
+			}
+		}
+
+		article.displayOptionsManageUser
+		{
+			margin: 0px 0px 0px 33px;
+			display: flex;
+			flex-direction: row;
+
+			a
+			{
+				box-shadow: 2px 2px 3px black;
+				background-color: $buttonColorWhite;
+				height: 24px;
+				width: 100px;
+				text-align: center;
+				margin: 0px 0px 22px 11px;
+				font-family: $itemFont;
+				font-size: 24px;
+				font-weight: bold;
+				color: black;
+				text-decoration: none;
+			}
+		}
+
+		article.adminArticle
+		{
+			box-shadow: 2px 2px 3px black;
+			align-self: center;
+			@include make_button($buttonColorRed, 300px, 11px 0px 0px 0px, $itemFont, 33px, $colorFontBlack);
+		}
+	}
+
 }
 
 %footerDesktop

@@ -134,6 +134,11 @@ html
 	{
 		@extend %mainDesktop;
 
+		section#sectionAdmin_ManageUsers
+		{
+			color: $colorFontBlack;
+		}
+
 		section#viewMoreBox
 		{
 			width: calc(100vw - 300px);
@@ -168,6 +173,11 @@ html
 				box-shadow: 2px 2px 3px black;
 				@include make_button($buttonColorOrange, 300px, 0px 168px 22px 168px, $itemFont, 33px, $colorFontBlack);
 			}
+		}
+
+		span#adminWelcome
+		{
+			color: $colorFontBlack;
 		}
 
 		#registerForm

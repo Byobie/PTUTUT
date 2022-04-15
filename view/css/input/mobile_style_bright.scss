@@ -131,6 +131,11 @@ html
 	{
 		@extend %mainTabletMobile;
 
+		section#sectionAdmin_ManageUsers
+		{
+			color: $colorFontBlack;
+		}
+
 		section#viewMoreBox
 		{
 			width: 100vw;
@@ -165,6 +170,11 @@ html
 				box-shadow: 2px 2px 3px black;
 				@include make_button($buttonColorOrange, calc(100% - 44px), 22px, $itemFont, 33px, $colorFontBlack);
 			}
+		}
+		
+		span#adminWelcome
+		{
+			color: $colorFontBlack;
 		}
 
 		#registerForm

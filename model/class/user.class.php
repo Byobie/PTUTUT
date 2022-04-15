@@ -33,6 +33,17 @@
 
 			return $result["id_user"];
 		}
+
+		public function returnType ($argument)
+		{
+			$db = $this->database;
+			$query = $db->prepare("SELECT type_user FROM user WHERE login_user = :login");
+			$query->bindParam(":login", $argument);
+			$query->execute();
+			$result = $query->fetch();
+
+			return $result["type_user"];
+		}
 	}
 
 ?>

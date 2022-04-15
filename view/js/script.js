@@ -20,6 +20,8 @@ $(document).ready(function(){
 		$("#publishFormTwo").css({"margin-left": "264px"});
 		$("#publishFormThree").css({"margin-left": "264px"});
 		$("#publishFormFour").css({"margin-left": "264px"});
+		$("#sectionAdmin_one").css({"margin-left": "264px"});
+		$("#sectionAdmin_ManageUsers").css({"margin-left": "264px"});
 		closeMenu();
 	}
 
@@ -32,6 +34,8 @@ $(document).ready(function(){
 		$("#publishFormTwo").css({"margin-left": "0px"});	
 		$("#publishFormThree").css({"margin-left": "0px"});
 		$("#publishFormFour").css({"margin-left": "0px"});
+		$("#sectionAdmin_one").css({"margin-left": "0px"});
+		$("#sectionAdmin_ManageUsers").css({"margin-left": "0px"});
 		openMenu();
 	}
 
@@ -151,6 +155,8 @@ let resizeNav = 0;
 		$("#publishFormTwo").css({"margin-left": "0px"});	
 		$("#publishFormThree").css({"margin-left": "0px"});
 		$("#publishFormFour").css({"margin-left": "0px"})
+		$("#sectionAdmin_one").css({"margin-left": "300px"});
+		$("#sectionAdmin_ManageUsers").css({"margin-left": "300px"});
 	  }
 	});
 

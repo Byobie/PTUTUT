@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+{{ include("head.html.twig") }}
+{% endblock %}
+	<body>
+{% block header %}
+{% if connexionStatut is same as(true) %}
+{{ include("header_connected.html.twig") }}
+{% else %}
+{{ include("header.html.twig") }}
+{% endif %}
+{% endblock %}
+{% block nav %}
+{% if connexionStatut is same as(true) %}
+{{ include("nav_connected.html.twig") }}
+{% else %}
+{{ include("nav.html.twig") }}
+{% endif %}
+{% endblock %}
+		<main>
+			<section id="sectionAdmin_ManageUsers">
+				<span id="adminWelcome">Here is the list of our users, boss ! o7</span>
+				{% for key, user in displayUsers %}
+					{% if user['id_user'] == adminActionId_User %}
+				<span class="displayUser"><span class="infoUser">LOGIN :</span> {{user['login_user']}} -- <span class="infoUser">EMAIL :</span> {{user['email_user']}} -- <span class="infoUser">TYPE :</span> {{user['type_user']}}</span>
+				<article class="displayOptionsManageUser">
+					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=10">Edit</a>
+					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=11">Delete</a>
+				</article>
+					{% endif %}
+				{% endfor %}
+				<article class="adminArticle"><a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=9">GO BACK</a></article>
+			</section>
+		</main>
+{% block footer %}
+{{ include("footer.html.twig") }}
+{% endblock %}
+	</body>
+</html>

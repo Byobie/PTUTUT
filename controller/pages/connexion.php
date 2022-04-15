@@ -5,20 +5,32 @@
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
 		unset($_SESSION["access"]);
-
-		$_SESSION["accessConstructor"] = true;
-
-		if(isset($_SESSION["publishForm"]) && $_SESSION["publishForm"] == true)
+		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
 		{
-			unset($_SESSION["publishForm"]);
+			if(isset($_GET["selectedTheme"]))
+			{
+				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
+				exit;
+			}
+			else
+			{
+				header('Location: ../../index.php?selectedTheme=dark&pageNumber=3');
+				exit;
+			}
 		}
+		else
+		{
+			unset($_SESSION["access"]);
 
-		$_SESSION["pagePosition"] = "LOG IN";
-		$template = "connexion.html.twig";
+			$_SESSION["accessConstructor"] = true;
 
-		require("./constructor.php");
+			$_SESSION["pagePosition"] = "LOG IN";
+			$template = "connexion.html.twig";
 
-		$_SESSION["accessConstructor"] = false;
+			require("./constructor.php");
+
+			$_SESSION["accessConstructor"] = false;
+		}
 	}
 	else
 	{

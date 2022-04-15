@@ -267,9 +267,102 @@
 		}
 	}
 
+	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 8) 
+	{
+		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
+		{
+			if(isset($_SESSION["typeUser"]) && $_SESSION["typeUser"] == "admin")
+			{
+				$_SESSION["access"] = true;
+				$_SESSION["adminPosition"] = 1;
 
+				header('Location: ./controller/pages/adminPanel.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
 
+			}
+			else
+			{
+				header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
+				exit;
+			}
 
+		}
+		else
+		{
+			$_SESSION["connexionError"] = "ACCESS DENIED";
+
+			header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
+			exit;
+		}
+	}
+
+	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 9) 
+	{
+		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
+		{
+			if(isset($_SESSION["typeUser"]) && $_SESSION["typeUser"] == "admin")
+			{
+				$_SESSION["access"] = true;
+				$_SESSION["adminPosition"] = 2;
+				unset($_SESSION["adminAction"]);
+
+				header('Location: ./controller/pages/adminPanel.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+
+			}
+			else
+			{
+				header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
+				exit;
+			}
+
+		}
+		else
+		{
+			$_SESSION["connexionError"] = "ACCESS DENIED";
+
+			header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
+			exit;
+		}
+	}
+
+	elseif (isset($_GET["pageNumber"]) && $_GET["pageNumber"] == 10) 
+	{
+		if(isset($_SESSION["connexionStatut"]) && $_SESSION["connexionStatut"] === true)
+		{
+			if(isset($_SESSION["typeUser"]) && $_SESSION["typeUser"] == "admin")
+			{
+				$_SESSION["access"] = true;
+				$_SESSION["adminPosition"] = 2;
+				$_SESSION["adminAction"] = 1;
+
+				$_SESSION["adminActionId_User"] = $_GET["id_user"];
+
+				if(isset($_POST["formSent"]) && $_POST["formSent"] == 7)
+				{
+
+				}
+				else
+				{
+					header('Location: ./controller/pages/adminPanel.php?selectedTheme='.$_GET["selectedTheme"]);
+					exit;
+				}
+
+			}
+			else
+			{
+				header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
+				exit;
+			}
+		}
+		else
+		{
+			$_SESSION["connexionError"] = "ACCESS DENIED";
+
+			header('Location: ./index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
+			exit;
+		}
+	}
 
 
 
