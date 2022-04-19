@@ -19,20 +19,26 @@
 {% endif %}
 {% endblock %}
 		<main>
-			<section id="sectionAdmin_ManageUsers">
-				<span id="adminWelcome">Here is the list of our users, boss ! o7</span>
-				{% for key, user in displayUsers %}
-					{% if user['id_user'] == adminActionId_User %}
-				<span class="displayUser"><span class="infoUser">LOGIN :</span> {{user['login_user']}} -- <span class="infoUser">EMAIL :</span> {{user['email_user']}} -- <span class="infoUser">TYPE :</span> {{user['type_user']}}</span>
-				<article class="displayOptionsManageUser">
-					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=10">Edit</a>
-					<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=11">Delete</a>
-				</article>
-					{% endif %}
-				{% endfor %}
-				<article class="adminArticle"><a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=9">GO BACK</a></article>
+			{% for key, user in displayUsers %}
+			{% if user['id_user'] == adminActionId_User %}
+			<section>
+				<article id="registerForm">
+					<form method="post" action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=10">
+						<label id="email">{{site["emailAdress"]}}</label>
+						<input type="text" name="emailAdmin" id="email_form" value="{{user['email_user']}}" required>
+						<label id="login">{{site["login"]}}</label>
+						<input type="text" name="loginAdmin" id="login_form" value="{{user['login_user']}}"  required>
+						<label id="type">TYPE :</label>
+						<input type="text" name="typeAdmin" id="type_form" value="{{user['type_user']}}" required>
+						<input type="submit" name="submit" value="UPDATE">
+						<input type="hidden" name="formSent" value="7">
+						<a class="admin_Back" href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=9">GO BACK</a>
+					</form>
+				</article>	
 			</section>
 		</main>
+		{% endif %}
+		{% endfor %}
 {% block footer %}
 {{ include("footer.html.twig") }}
 {% endblock %}

@@ -135,10 +135,120 @@ $(document).ready(function(){
 		}
 	}
 
+//VIEWMORE
+
+let low = 3;
+let high = 6;
+
+function viewMore ()
+{
+
+	if($("#position_tablet_mobile > span").text() == "FRESH" || $("#position_desktop > span").text() == "FRESH")
+	{
+		$.post('../../model/script/getMoreNews.php',
+		{
+		    low: low,
+		    high: high,
+		}, function(data) {
+
+			let result = $.parseJSON(data)
+
+			if(result.length > 0)
+			{
+			   	for (let i = 0; i <= result.length - 1; i++) 
+			   	{
+			   		let newsData = result[i];
+
+			   		let news = "<article class='news'>";
+			   		news += "<div>";
+			   		news += "<a href=''><h2>" + newsData["login_user"] + "</h2></a>";
+					news += "<div>";
+					news += "<span>" + newsData["date_news"] + "</span>";
+					news += "<h4>"  + newsData["name_category"] + "</h4>";
+					news += "</div>";
+					news += "</div>";
+					news += "<div>";
+					news += "<h3>"  + newsData["title_news"] + "</h3>";
+					news += "</div>";
+					news += "<div>";
+
+					if(newsData["image_news"] == "../model/Uploads/")
+					{
+						news += "<p>" + newsData["content_news"] + "</p>";
+					}
+					else
+					{
+						news += "<p><img src='../" + newsData["image_news"] + "' alt='image de la nouvelle'></img>" + newsData["content_news"] + "</p>";
+					}
+					news += "<p style='display: none; font-size: 28px'>";
+					news += "1. <a style='color:inherit; text-decoration: none;'  href='" + newsData["sourceOneUrl_news"] + "'>" + newsData["sourceOneTitle_news"] + "</a></br></br>";
+
+					if (newsData["sourceTwoTitle_news"] != "")
+					{
+						news += "2. <a style='color:inherit; text-decoration: none;'  href='" + newsData["sourceTwoUrl_news"] + "'>" + + newsData["sourceTwoTitle_news"] + "</a></br></br>";
+					}
+
+					if (newsData["sourceThreeTitle_news"] != "")
+					{
+						news += "3. <a style='color:inherit; text-decoration: none;'  href='" + newsData["sourceThreeUrl_news"] + "'>" + + newsData["sourceThreeTitle_news"] + "</a></br></br>";
+					}
+
+					news += "</p>";
+					news += "</div>";
+					news += "<div>";
+					news += "<span class='sourcesNews'><h4>SOURCES</h4></span>";
+					news += "</div>";
+					news += "</article>";	
+
+			   		$("article.news:last-child" ).after(news);
+			   	}
+
+			   	$(".sourcesNews").click(viewSources);
+			   	low = low+3;
+			   	high = high +3;
+			}
+			else
+			{
+				console.log("lel nope");
+			}
+		});
+	}
+}
+
+//VIEW SOURCES
+
+function hideNews()
+{
+	$($($(this).parent()).parent()).find("div:nth-child(3) > p:first-child").css("display", "block");
+	$($($(this).parent()).parent()).find("div:nth-child(3) > p:last-child").css("display", "none");
+	$(this).children().text("SOURCES");
+
+	$(this).click(viewSources);
+}
+
+function viewSources()
+{
+	$($($(this).parent()).parent()).find("div:nth-child(3) > p:first-child").css("display", "none");
+	$($($(this).parent()).parent()).find("div:nth-child(3) > p:last-child").css("display", "block");
+	$(this).children().text("CLOSE");
+
+	$(this).click(hideNews);
+}
+
 //STARTING
 
 	openMenu();
 	setTheme();
+
+if($("#viewMore"))
+{
+	$("#viewMore").click(viewMore);
+}
+
+if($(".sourcesNews"))
+{
+	$(".sourcesNews").click(viewSources);
+}
 
 //KEEPING THE NAV PANNEL HIDDEN/DISPLAYED WHEN SWITCHING FROM TABLET/MOBILE X DESKTOP.
 

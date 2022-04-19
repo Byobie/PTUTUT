@@ -101,6 +101,11 @@ switch ($pageNumber)
 			unset($_SESSION["publishSourceError"]);
 		}
 
+		if(isset($_SESSION["publishForm"]))
+		{
+			unset($_SESSION["publishForm"]);
+		}
+
 		break;
 
 	case 1 :

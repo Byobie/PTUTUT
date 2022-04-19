@@ -34,9 +34,20 @@
 						</div>
 						<div>
 							<p>{% if currentNew["image_news"] is same as("../model/Uploads/") %} {% else %} <img src="../{{currentNew['image_news']}}" alt="image de la nouvelle"></img> {% endif %}{{currentNew["content_news"]}}</p>
+							<p style="display: none; font-size: 28px">
+								1. <a style="color:inherit; text-decoration: none;"  href="{{currentNew['sourceOneUrl_news']}}">{{currentNew["sourceOneTitle_news"]}}</a></br></br>
+
+								{% if currentNew["sourceTwoTitle_news"] != "" %}
+								2. <a style="color:inherit; text-decoration: none;;"  href="{{currentNew['sourceTwoUrl_news']}}">{{currentNew["sourceTwoTitle_news"]}}</a></br></br>
+								{% endif %}
+
+								{% if currentNew["sourceThreeTitle_news"] != "" %}
+								3. <a style="color:inherit; text-decoration: none;"  href="{{currentNew['sourceThreeUrl_news']}}">{{currentNew["sourceThreeTitle_news"]}}</a></br></br>
+								{% endif %}
+							</p>
 						</div>
 						<div>
-							<a href=""><h4>SOURCES</h4></a>
+							<span class="sourcesNews"><h4>SOURCES</h4></span>
 						</div>
 				</article>
 			{% endfor %}

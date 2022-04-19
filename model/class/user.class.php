@@ -44,6 +44,25 @@
 
 			return $result["type_user"];
 		}
+
+		public function updateUser ($email, $login, $type, $id)
+		{
+			$db = $this->database;
+			$query = $db->prepare("UPDATE user SET login_user = :login, email_user = :email, type_user = :type WHERE id_user = :id");
+			$query->bindParam(":login", $login);
+			$query->bindParam(":email", $email);
+			$query->bindParam(":type", $type);
+			$query->bindParam(":id", $id);
+			$query->execute();
+		}
+
+		public function deleteUser ($id)
+		{
+			$db = $this->database;
+			$query = $db->prepare("DELETE FROM user WHERE id_user = :id");
+			$query->bindParam(":id", $id);
+			$query->execute();
+		}
 	}
 
 ?>

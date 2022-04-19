@@ -167,8 +167,16 @@ html
 
 			div:nth-child(4)
 			{
+				background-color: $buttonColorOrange;
+				height: 38px;
+				padding-top: 6px;
+				text-align: center;
+				font-size: 33px;
+				font-family: $itemFont;
+				font-weight: bold;
+				margin: 22px;
 				box-shadow: 2px 2px 3px black;
-				@include make_button($buttonColorOrange, calc(100% - 44px), 22px, $itemFont, 33px, $colorFontBlack);
+				color: $colorFontBlack;
 			}
 		}
 		

@@ -31,6 +31,15 @@
 			$displayUsers = "";
 		}
 
+		if(isset($_SESSION["adminPosition"]) && $_SESSION["adminPosition"] == 3)
+		{
+			$displayNewsAdmin = $dbQuery->getNewsList("news", "*");		
+		}
+		else
+		{
+			$displayNewsAdmin = "";
+		}
+
 		$usersArray = $dbQuery->getDataWithoutCondition("user", "id_user, login_user");
 		ksort($usersArray);
 
@@ -90,7 +99,7 @@
 
 		if(isset($_SESSION["publishTitle"]))
 		{
-			$publishTitle = $_SESSION["publishTitle"];
+			$publishTitle = html_entity_decode($_SESSION["publishTitle"]);
 		}
 		else
 		{
@@ -99,7 +108,7 @@
 
 		if(isset($_SESSION["publishContent"]))
 		{
-			$publishContent = $_SESSION["publishContent"];
+			$publishContent = html_entity_decode($_SESSION["publishContent"]);
 		}
 		else
 		{
@@ -188,7 +197,14 @@
 		}
 		if(isset($_SESSION["publishSource"]))
 		{
-			$publishSource = $_SESSION["publishSource"];
+			$publishSource = [];
+
+			array_push($publishSource, html_entity_decode($_SESSION["publishSource"][0]));
+			array_push($publishSource, html_entity_decode($_SESSION["publishSource"][1]));
+			array_push($publishSource, html_entity_decode($_SESSION["publishSource"][2]));
+			array_push($publishSource, html_entity_decode($_SESSION["publishSource"][3]));
+			array_push($publishSource, html_entity_decode($_SESSION["publishSource"][4]));
+			array_push($publishSource, html_entity_decode($_SESSION["publishSource"][5]));
 		}
 		else
 		{
@@ -215,14 +231,13 @@
 		if(isset($_SESSION["adminActionId_User"]))
 		{
 			$adminActionId_User = $_SESSION["adminActionId_User"];
-			var_dump($adminActionId_User);
 		}
 		else
 		{
 			$adminActionId_User = "";
 		}
 
-		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray, 'publishSourceError' => $publishSourceError, 'publishSource' => $publishSource, 'typeUser' => $typeUser, 'displayUsers' => $displayUsers, 'adminColor' => $adminColor, 'adminActionId_User' => $adminActionId_User));
+		echo $twig->render($template, array('site' => $table, 'selectedTheme' => $selectedTheme, 'publishForm' => $publishForm, "connexionStatut" => $connexionStatut, "pagePosition" => $pagePosition, "registerError" => $registerError, "connexionError" => $connexionError, 'publishTitle' => $publishTitle, 'publishContent' => $publishContent, 'publishError' => $publishError, "imagePublishError" => $imagePublishError, "imagePublishSuccess" => $imagePublishSuccess, "imagePublishMessage" => $imagePublishMessage, 'publishSections' => $publishSections, 'publishCategoryError' => $publishCategoryError, 'publishColor' => $publishColor, 'registerLogin' => $registerLogin, 'registerEmail' => $registerEmail, 'publishCategorySelected' => $publishCategorySelected, 'browseCategory' => $browseCategory, 'displayNews' => $displayNews, 'usersArray' => $usersArray, 'publishSourceError' => $publishSourceError, 'publishSource' => $publishSource, 'typeUser' => $typeUser, 'displayUsers' => $displayUsers, 'adminColor' => $adminColor, 'adminActionId_User' => $adminActionId_User, 'displayNewsAdmin' => $displayNewsAdmin));
 	}
 	else
 	{

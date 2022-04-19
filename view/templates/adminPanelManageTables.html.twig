@@ -20,13 +20,12 @@
 {% endblock %}
 		<main>
 			<section id="sectionAdmin_ManageUsers">
-				<div>	
-					<span id="adminWelcome">Here is the list of our users, boss ! o7</span>
-					{% for key, user in displayUsers %}
-					<span class="displayUser"><span class="infoUser">LOGIN :</span> {{user['login_user']}} -- <span class="infoUser">EMAIL :</span> {{user['email_user']}} -- <span class="infoUser">TYPE :</span> {{user['type_user']}}</span>
+				<div>
+					<span id="adminWelcome">Here is the list of our news, boss ! o7</span>
+					{% for key, news in displayNewsAdmin %}
+					<span class="displayUser"><span class="infoUser">TITLE :</span> {{news['title_news']}} -- <span class="infoUser">DATE :</span> {{news['date_news']}} -- <span class="infoUser">USER :</span> {{usersArray[news["id_user_news"]]}} -- <span class="infoUser">CATEGORY :</span> {{publishSections[news["id_category_news"]]}}</span>
 					<article class="displayOptionsManageUser">
-						<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=10&id_user={{user['id_user']}}">Edit</a>
-						<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=11&id_user={{user['id_user']}}">Delete</a>
+						<a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=13&id_news={{news['id_news']}}">Delete</a>
 					</article>
 					{% endfor %}
 					<article class="adminArticle"><a href="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=8">GO BACK</a></article>

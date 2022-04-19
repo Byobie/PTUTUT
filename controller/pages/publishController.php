@@ -97,6 +97,10 @@
 
 			if($result === true)
 			{
+
+				$_SESSION["publishTitle"] = htmlentities($_SESSION["publishTitle"]);
+				$_SESSION["publishContent"] = htmlentities($_SESSION["publishContent"]);		
+					
 				unset($_SESSION["publishError"]);
 
 				$_SESSION["publishStepTwo"] = true;

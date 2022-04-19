@@ -23,7 +23,7 @@
 			exit;
 		}
 
-		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&page_number=0');
+		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
 		exit;
 	}
 	else

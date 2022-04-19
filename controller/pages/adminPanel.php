@@ -21,17 +21,17 @@
 				{
 					$_SESSION["pagePosition"] = "EDIT USER";
 					$template = "adminPanelEditUser.html.twig";
-
-					
 				}
 				else
 				{
 					$_SESSION["pagePosition"] = "MANAGE USER";
 					$template = "adminPanelManageUsers.html.twig";
 				}
-
-
-
+			}
+			elseif(isset($_SESSION["adminPosition"]) && $_SESSION["adminPosition"] === 3)
+			{
+				$_SESSION["pagePosition"] = "MANAGE CONTENT";
+				$template = "adminPanelManageTables.html.twig";
 			}
 
 			require("./constructor.php");

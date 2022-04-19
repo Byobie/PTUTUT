@@ -74,8 +74,23 @@
 			$query->bindParam(":high", $highLimit);
 			$query->execute();
 			$query->fetchAll();
+		}
 
-			var_dump($query);
+		public function deleteNews ($id)
+		{
+			$db = $this->database;
+
+			$query = $db->prepare("SELECT image_news FROM news WHERE id_news = :id");
+			$query->bindParam(":id", $id);
+			$query->execute();
+			$data = $query->fetch();
+
+			$link = str_replace("/model", "", $data["image_news"]);
+			unlink($link);
+
+			$query = $db->prepare("DELETE FROM news WHERE id_news = :id");
+			$query->bindParam(":id", $id);
+			$query->execute();
 		}
 	}
 
