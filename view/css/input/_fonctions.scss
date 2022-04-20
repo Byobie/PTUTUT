@@ -549,6 +549,7 @@
 		article.adminArticle
 		{
 			box-shadow: 2px 2px 3px black;
+			align-self: center;
 			@include make_button($buttonColorWhite, 300px, 11px 0px 0px 0px, $itemFont, 33px, $colorFontBlack);
 		}
 	}
@@ -989,6 +990,7 @@
 		justify-content: center;
 		align-content: center;
 		height: calc(100vh - 154px);
+		width: 500px;
 
 		input
 		{
@@ -1010,14 +1012,6 @@
 		{
 			margin-bottom: 33px;
 			align-self: flex-end;
-		}
-
-		textarea
-		{
-			height: 176px;
-			margin-top: 11px;
-			width: 500px;	
-			border: solid black 2px;		
 		}
 
 		input[type=submit]
@@ -1066,6 +1060,7 @@
 		justify-content: center;
 		align-content: center;
 		height: calc(100vh - 110px);
+		width: 50vw;
 
 		input
 		{
@@ -1088,14 +1083,6 @@
 		{
 			margin-bottom: 33px;
 			align-self: flex-end;
-		}
-
-		textarea
-		{
-			height: 176px;
-			margin-top: 11px;
-			width: 50vw;
-			border: solid black 2px;
 		}
 
 		input[type=submit]
@@ -1163,14 +1150,6 @@
 		{
 			margin-bottom: 33px;
 			align-self: flex-end;
-		}
-
-		textarea
-		{
-			height: 176px;
-			margin-top: 11px;
-			width: 75vw;
-			border: solid black 2px;
 		}
 
 		input[type=submit]
@@ -1511,6 +1490,11 @@
 
 %tablet_publish_step_four
 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+
 	form
 	{
 		font-family: "economica";
@@ -1527,12 +1511,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-content: center;
-			margin-top: -90px;
-
-			span 
-			{
-				margin-bottom: 33px;
-			}
+			margin-top: -33px;
 
 			div
 			{
@@ -1594,6 +1573,11 @@
 
 %mobile_publish_step_four
 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+
 	form
 	{
 		font-family: "economica";
@@ -1610,12 +1594,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-content: center;
-			margin-top: -90px;
-
-			span 
-			{
-				margin-bottom: 33px;
-			}
+			margin-top: -33px;
 
 			div
 			{

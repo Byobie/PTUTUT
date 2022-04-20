@@ -22,24 +22,24 @@
 			<section>
 				<article id="publishFormFour">
 					<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=7" method="post">
-						<span style="text-align: center; margin: 11px 0px 22px 0px; font-style: italic;">You must provide one source at least. Titles must be ten characters long minimum.</span>
+						<span style="text-align: center; margin: 11px 0px 22px 0px;">You must provide 1 source at least. Titles must be 10 characters long minimum.</span>
 						<span style="color: red; align-self: center; margin-top: 33px;">{{publishSourceError}}</span>
 						<div>
 							<div>
 								<label for="sourceTitleOne">Source title 1 [MANDATORY] :</label>
-								<input type="text" name="sourceTitleOne" id="sourceTitleOne" value="{{publishSource[0]}}" required>
+								<input type="text" name="sourceTitleOne" id="sourceTitleOne" value="{{publishSource[0]}}" placeholder="10 characters long minimum." required>
 								<label for="sourceUrlOne">URL 1 [MANDATORY] :</label>
 								<input type="text" name="sourceUrlOne" id="sourceUrlOne" value="{{publishSource[1]}}" required>
 							</div>
 							<div>
 								<label for="sourceTitleTwo">Source title 2 [OPTIONNAL] :</label>
-								<input type="text" name="sourceTitleTwo" id="sourceTitleTwo" value="{{publishSource[2]}}" >
+								<input type="text" name="sourceTitleTwo" id="sourceTitleTwo" value="{{publishSource[2]}}" placeholder="10 characters long minimum.">
 								<label for="sourceUrl">URL 2 [OPTIONNAL] :</label>
 								<input type="text" name="sourceUrlTwo" id="sourceUrlTwo" value="{{publishSource[3]}}" >
 							</div>
 							<div>
 								<label for="sourceTitleThree">Source title 3 [OPTIONNAL] :</label>
-								<input type="text" name="sourceTitleThree" id="sourceTitleThree" value="{{publishSource[4]}}" >
+								<input type="text" name="sourceTitleThree" id="sourceTitleThree" value="{{publishSource[4]}}" placeholder="10 characters long minimum.">
 								<label for="sourceUrl">URL 3 [OPTIONNAL] :</label>
 								<input type="text" name="sourceUrlThree" id="sourceUrlThree" value="{{publishSource[5]}}" >
 							</div>

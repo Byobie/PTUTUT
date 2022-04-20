@@ -25,9 +25,12 @@
 						<label id="email">{{site["emailAdress"]}}</label>
 						<input type="text" name="email" id="email_form" value="{{registerEmail}}" required>
 						<label id="login">{{site["login"]}}</label>
-						<input type="text" name="login" id="login_form" value="{{registerLogin}}"  required>
+						<input type="text" name="login" id="login_form" value="{{registerLogin}}" required>
+						<p id="loginCondition" style="font-size: 20px; margin: -30px 0px 22px 0px; font-weight: bold;">10 characters max, no white spaces, no special characters.</p>
 						<label id="password">{{site["password"]}}</label>
-						<input type="password" minlength="12" name="password" id="password_form" placeholder="12 characters min" required>
+						<input type="password" minlength="12" name="password" id="password_form" required>
+						<p id="passwordCondition" style="font-size: 20px; margin: -30px 0px 22px 0px; font-weight: bold;">12 characters minimum, no white spaces.</p>
+						<!-- <p id="passwordCondition" style="display: none; font-size: 18px; margin: -30px 0px 22px 0px; font-style: italic;">It still needs :<span> 12 characters,</span> <span>1 majuscule,</span> <span>1 miniscule,</span> <span>1 digit,</span> <span>1 special character</span></p> -->
 						<label id="confirmPassword">{{site["repeatPassword"]}}</label>
 						<input type="password" minlength="12" name="confirmPassword" id="confirmPassword_form" required>
 						<input type="submit" name="submit" value="REGISTER">

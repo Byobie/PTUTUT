@@ -213,6 +213,80 @@ function viewMore ()
 			}
 		});
 	}
+	else
+	{
+		let position = $("#position_tablet_mobile > span").text();
+
+		$.post('../../model/script/getMoreNewsByCategory.php',
+		{
+		    low: low,
+		    high: high,
+		    position: position,
+
+		}, function(data) {
+
+			let result = $.parseJSON(data)
+			
+			if(result.length > 0)
+			{
+			   	for (let i = 0; i <= result.length - 1; i++) 
+			   	{
+			   		let newsData = result[i];
+
+			   		let news = "<article class='news'>";
+			   		news += "<div>";
+			   		news += "<a href=''><h2>" + newsData["login_user"] + "</h2></a>";
+					news += "<div>";
+					news += "<span>" + newsData["date_news"] + "</span>";
+					news += "<h4>"  + newsData["name_category"] + "</h4>";
+					news += "</div>";
+					news += "</div>";
+					news += "<div>";
+					news += "<h3>"  + newsData["title_news"] + "</h3>";
+					news += "</div>";
+					news += "<div>";
+
+					if(newsData["image_news"] == "../model/Uploads/")
+					{
+						news += "<p>" + newsData["content_news"] + "</p>";
+					}
+					else
+					{
+						news += "<p><img src='../" + newsData["image_news"] + "' alt='image de la nouvelle'></img>" + newsData["content_news"] + "</p>";
+					}
+					news += "<p style='display: none; font-size: 28px'>";
+					news += "1. <a style='color:inherit; text-decoration: none;'  href='" + newsData["sourceOneUrl_news"] + "'>" + newsData["sourceOneTitle_news"] + "</a></br></br>";
+
+					if (newsData["sourceTwoTitle_news"] != "")
+					{
+						news += "2. <a style='color:inherit; text-decoration: none;'  href='" + newsData["sourceTwoUrl_news"] + "'>" + + newsData["sourceTwoTitle_news"] + "</a></br></br>";
+					}
+
+					if (newsData["sourceThreeTitle_news"] != "")
+					{
+						news += "3. <a style='color:inherit; text-decoration: none;'  href='" + newsData["sourceThreeUrl_news"] + "'>" + + newsData["sourceThreeTitle_news"] + "</a></br></br>";
+					}
+
+					news += "</p>";
+					news += "</div>";
+					news += "<div>";
+					news += "<span class='sourcesNews'><h4>SOURCES</h4></span>";
+					news += "</div>";
+					news += "</article>";	
+
+			   		$("article.news:last-child" ).after(news);
+			   	}
+
+			   	$(".sourcesNews").click(viewSources);
+			   	low = low+3;
+			   	high = high +3;
+			}
+			else
+			{
+				console.log("lel nope");
+			}
+		});
+	}
 }
 
 //VIEW SOURCES
@@ -234,6 +308,95 @@ function viewSources()
 
 	$(this).click(hideNews);
 }
+
+//PASSWORD VALIDATOR
+
+/*function passwordValidator (element)
+	{
+		$("#passwordCondition").css("display", "inline");
+
+		let passwordValue = $(element).val();
+
+		let upperCase = new RegExp(/[A-Z]/);
+		let lowerCase = new RegExp(/[a-z]/);
+		let numbers = new RegExp(/[0-9]/);
+		let specials = new RegExp(/[ éèç°`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/);
+
+		let interuptor = 0;
+
+		if(passwordValue.length >= 12)
+		{
+			$("#passwordCondition > span:first-child").css("display", "none");
+			interuptor++;
+		}
+		else
+		{
+			$("#passwordCondition > span:first-child").css("display", "initial");
+			interuptor--;
+		}
+
+		if(upperCase.test(passwordValue))
+		{
+			$("#passwordCondition > span:nth-child(2)").css("display", "none");
+			interuptor++;
+		}
+		else
+		{
+			$("#passwordCondition > span:nth-child(2)").css("display", "initial");
+			interuptor--;
+		}
+
+		if(lowerCase.test(passwordValue))
+		{
+			$("#passwordCondition > span:nth-child(3)").css("display", "none");
+			interuptor++;
+		}
+		else
+		{
+			$("#passwordCondition > span:nth-child(3)").css("display", "initial");
+			interuptor--;
+		}
+
+		if(numbers.test(passwordValue))
+		{
+			$("#passwordCondition > span:nth-child(4)").css("display", "none");
+			interuptor++;
+		}
+		else
+		{
+			$("#passwordCondition > span:nth-child(4)").css("display", "initial");
+			interuptor--;
+		}
+
+		if(specials.test(passwordValue))
+		{
+			$("#passwordCondition > span:last-child").css("display", "none");
+			interuptor++;
+		}
+		else
+		{
+			$("#passwordCondition > span:last-child").css("display", "initial");
+			interuptor--;
+		}
+
+		if(interuptor == 5)
+		{
+			$("#passwordCondition").css("display", "none");
+		}
+		else
+		{
+			$("#passwordCondition").css("display", "initial");
+		}
+	}
+
+
+if($("#passwordCondition"))
+{
+	$("#password_form").keyup(function()
+	{
+		passwordValidator ($(this));
+	});
+}*/
 
 //STARTING
 

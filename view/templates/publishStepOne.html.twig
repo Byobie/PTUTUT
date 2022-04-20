@@ -24,10 +24,10 @@
 					<form method="post" action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=4">
 						<h3>{{site["publishStepOne"]}}</h3>
 						<label id="title">{{site["publishTitle"]}}</label>
-						<input type="text" name="title" id="title_form" maxlength=75 value="{{publishTitle}}" required>
+						<input type="text" name="title" id="title_form" maxlength=75 value="{{publishTitle}}" placeholder="Your title must be 10 characters minimum." required>
 						<span id="titleSpan"></span>
 						<label id="login">{{site["publishContent"]}}</label>
-						<textarea name="content" id="content_form" maxlength=500 required>{{publishContent}}</textarea>
+						<textarea name="content" id="content_form" maxlength=500 placeholder="Your content must be 100 characters minimum." required>{{publishContent}}</textarea>
 						<span id="contentSpan"></span>
 						<input type="submit" name="submit" value="NEXT">
 						<input type="hidden" name="formSent" value="3">

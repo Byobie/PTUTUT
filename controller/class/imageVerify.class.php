@@ -90,7 +90,7 @@
         private function checkSize()
         {
 
-            if ($this->temporaryFile > 5120000) 
+            if ($this->temporaryFile > 1024000) 
             {
                 $result = "Your image must not weight more than 5 MB.";
                 $this->deleteImage();

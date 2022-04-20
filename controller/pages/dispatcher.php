@@ -464,6 +464,48 @@
 		}
 	}
 
+	elseif (isset($_GET["pageNumber"]) && ($_GET["pageNumber"] > 13) && ($_GET["pageNumber"] < 17))
+	{
+		switch ($_GET["pageNumber"]) 
+		{
+			case 14 :
+				
+				$_SESSION["access"] = true;
+				$_SESSION["pagePosition"] = "POLITICS";
+
+				header('Location: ./controller/pages/category.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;	
+
+				break;
+
+			case 15 :
+
+				$_SESSION["access"] = true;
+				$_SESSION["pagePosition"] = "ANIMALS";
+
+				header('Location: ./controller/pages/category.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+
+				break;
+
+			case 16 :
+
+				$_SESSION["access"] = true;
+				$_SESSION["pagePosition"] = "SATIRICAL";
+
+				header('Location: ./controller/pages/category.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+
+				break;
+
+			default:
+
+				header('Location: ./controller/pages/mainPage.php?selectedTheme='.$_GET["selectedTheme"]);
+				exit;
+				// code...
+				break;
+		}
+	}
 
 	else
 	{

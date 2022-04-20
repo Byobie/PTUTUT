@@ -22,8 +22,9 @@
 			<section>
 				<article id="publishFormTwo">
 					<form action="../../index.php?selectedTheme={{selectedTheme}}&pageNumber=5" method="post" enctype="multipart/form-data">
+						<span style="text-align: center; margin: 11px 0px 22px 0px;">The image is not mandatory. If you choose so, it must be 250px on 250px and not exceed 1 MB. Allowed formats : jpg, jpeg, png, gif.</span>
 						<span style="color: {% if imagePublishSuccess is same as(true) %}green{% else %}red{% endif %}; align-self: center;">{% if imagePublishSuccess is same as(true) %}{{imagePublishMessage}}{% else %}{{imagePublishError}}{% endif %}</span>	
-						<label id=fileToUpload>[OPTIONNAL] Add an image :</label>
+						<label id=fileToUpload>Add an image [OPTIONNAL] :</label>
 						<input type="file" name="fileToUpload" id="fileToUpload" value="CHOOSE A FILE">
 						<input type="submit" value="NEXT" name="submit">
 						<input type="hidden" name="formSent" value="4">

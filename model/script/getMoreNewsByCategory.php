@@ -6,8 +6,13 @@
 
 	$dbQuery = new sqlQuery("99percents", "localhost", "utf8", 3308, "root", "");
 
-	$displayCategory = $dbQuery->getCategoryList("category", "*");	
+	$low = $_POST["low"];
+	$high = $_POST["high"];
+	$position = $_POST["position"];
 
-	print_r(json_encode($displayCategory));
+	$displayNews = $dbQuery->getMoreNewsByCategory($position, $low, $high);		
+
+
+	print_r(json_encode($displayNews));
 
 ?>

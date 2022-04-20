@@ -42,6 +42,20 @@
 			return $datas;
 		}
 
+		public function getMoreNewsByCategory ($position, $lowLimit, $highLimit)
+		{
+			$db = $this->dataBase;
+
+			$query = $db->prepare("SELECT news.*, user.login_user, category.name_category FROM news INNER JOIN user ON news.id_user_news = user.id_user INNER JOIN category ON news.id_category_news = category.id_category WHERE category.name_category = :position ORDER BY news.date_news DESC LIMIT :low, :high");
+			$query->bindParam(":low", $lowLimit);
+			$query->bindParam(":high", $highLimit);
+			$query->bindParam(":position", $position);
+			$query->execute();
+			$datas = $query->fetchAll();
+
+			return $datas;
+		}
+
 		public function getNewsList ($table, $fields)
 		{
 			$db = $this->dataBase;

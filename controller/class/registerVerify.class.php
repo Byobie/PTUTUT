@@ -47,7 +47,7 @@
 			{
 				if(strlen($username) <= 10)
 				{
-					if(preg_match("~[a-zA-Z_0-9]+~", $username))
+					if(preg_match("~^[A-Za-z0-9_]+~", $username) && !preg_match("~[ ]+~", $username))
 					{
 						$db = $this->database;
 						$query = $db->prepare("SELECT id_user FROM user WHERE login_user =:username");
@@ -94,15 +94,15 @@
 				{
 					if(strlen($password) >= 12)
 					{
-						if(preg_match("~[a-z]+~", $password) && preg_match("~[A-Z]+~", $password) && preg_match("~[0-9]+~", $password) && preg_match("~[^A-Za-z0-9]+~", $password))
+						if(preg_match("~[ ]+~", $password))
 						{
-							$check = true;
-							return $check;
+							$error = "Your password must not include white spaces.";
+							return $error;
 						}
 						else
 						{
-							$error = "Your password must include majuscules, minuscules, digits and specials characters.";
-							return $error;
+							$check = true;
+							return $check;
 						}
 					}
 					else
