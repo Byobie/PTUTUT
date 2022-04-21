@@ -25,6 +25,7 @@
 			$_SESSION["accessConstructor"] = true;
 
 			$_SESSION["pagePosition"] = "LOG IN";
+			$_SESSION["pageDescription"] = "Logged is great, but in, is better !";
 			$template = "connexion.html.twig";
 
 			require("./constructor.php");

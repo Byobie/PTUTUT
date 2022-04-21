@@ -120,6 +120,11 @@ html
 	{
 		@extend %mainDesktop;
 
+		section#legalMentions
+		{
+			color: $colorFontWhite;
+		}
+
 		section#sectionAdmin_ManageUsers
 		{
 			color: $colorFontWhite;
@@ -208,6 +213,12 @@ html
 		{
 			color: white;
 			@extend %desktop_publish_step_four;
+
+			div:nth-child(2)
+			{
+				border-left: solid white 2px;
+				border-right: solid white 2px;
+			}
 		}
 	}
 

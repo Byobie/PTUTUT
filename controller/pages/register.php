@@ -9,6 +9,7 @@
 		$_SESSION["accessConstructor"] = true;
 
 		$_SESSION["pagePosition"] = "REGISTER";
+		$_SESSION["pageDescription"] = "Our register page. Beautiful, isn't it ?";
 		$template = "register.html.twig";
 
 		require("./constructor.php");

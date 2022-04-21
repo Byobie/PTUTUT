@@ -131,6 +131,11 @@ html
 	{
 		@extend %mainTabletMobile;
 
+		section#legalMentions
+		{
+			color: $colorFontBlack;
+		}
+
 		section#sectionAdmin_ManageUsers
 		{
 			color: $colorFontBlack;

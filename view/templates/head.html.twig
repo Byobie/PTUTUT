@@ -1,7 +1,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{site["main_page"]}}</title>
+		<title>{{pagePosition}} - 99%</title>
+		<meta name="description" content="{{pageDescription}}">
 		<link rel="stylesheet" type="text/css" href="../../view/css/reset.css">
 		<link id="desktop" rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/desktop_style_dark.css {% else %} ../../view/css/output/desktop_style_bright.css {% endif %}">
 		<link id="tablet" rel="stylesheet" media="screen and (min-width: 590px) and (max-width: 1024px)" type="text/css" href="{% if selectedTheme == 'dark' %} ../../view/css/output/tablet_style_dark.css {% else %} ../../view/css/output/tablet_style_bright.css {% endif %}">

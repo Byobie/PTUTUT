@@ -168,26 +168,26 @@
 		{
 			if($this->titleOne != "")
 			{
-				if(strlen($this->titleOne) >= 10)
+				if(strlen($this->titleOne) >= 3)
 				{
 					if($this->titleOne != $this->titleTwo && $this->titleOne != $this->titleThree)
 					{
 						if($this->titleTwo != "")
 						{
-							if(strlen($this->titleTwo) >= 10)
+							if(strlen($this->titleTwo) >= 3)
 							{
 								if($this->titleTwo != $this->titleThree)
 								{
 									if($this->titleThree != "")
 									{
-										if(strlen($this->titleOne) >= 10)
+										if(strlen($this->titleOne) >= 3)
 										{
 											$result = true;
 											return $result;
 										}
 										else
 										{
-											$result = "Title three must be 10 characters long minimum.";
+											$result = "Title three must be 3 characters long minimum.";
 											return $result;
 										}
 									}
@@ -210,7 +210,7 @@
 							}
 							else
 							{
-								$result = "Title two must be 10 characters long minimum.";
+								$result = "Title two must be 3 characters long minimum.";
 								return $result;
 							}
 						}
@@ -223,14 +223,14 @@
 						{
 							if($this->titleThree != "")
 							{
-								if(strlen($this->titleOne) >= 10)
+								if(strlen($this->titleOne) >= 3)
 								{
 									$result = true;
 									return $result;
 								}
 								else
 								{
-									$result = "Title three must be 10 characters long minimum.";
+									$result = "Title three must be 3 characters long minimum.";
 									return $result;
 								}
 							}
@@ -249,7 +249,7 @@
 				}
 				else
 				{
-					$result = "Title one must be 10 characters long minimum.";
+					$result = "Title one must be 3 characters long minimum.";
 					return $result;
 				}
 			}

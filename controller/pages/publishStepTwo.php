@@ -10,6 +10,7 @@
 
 		$_SESSION["publishColor"] = true;
 		$_SESSION["pagePosition"] = "PUBLISH STEP 2/4";
+		$_SESSION["pageDescription"] = "An image is not necessary but, it is always better !";
 		
 		$_SESSION["publishForm"] = true;
 		$template = "publishStepTwo.html.twig";

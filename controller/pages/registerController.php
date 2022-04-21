@@ -7,6 +7,7 @@
 
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
+		unset($_SESSION["access"]);
 		//THE PURPOSE OF REGISTER CLASS IS TO VERIFY DATAS AND TO RETURN TRUE AS RESULT IF ALL IS GOOD OR AN ERROR MESSAGE IF IT IS NOT.
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
 		$registerVerify = new registerVerify($database->getDatabase());
@@ -18,7 +19,7 @@
 		{
 			$_SESSION["connexionStatut"] = true;
 			unset($_SESSION["registerError"]);
-			
+		
 			header('Location: ../../model/script/createUser.php?selectedTheme='.$_GET["selectedTheme"]);
 			exit;
 		}
@@ -28,23 +29,14 @@
 			$_SESSION["registerError"] = $result;
 
 			$_SESSION["access"] = false;
-			unset($_SESSION["access"]);
 			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=1');
 			exit;
 		}
 	}
 	else
 	{
-		if(isset($_GET["selectedTheme"]))
-		{
-			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=1');
-			exit;
-		}
-		else
-		{
-			header('Location: ../../index.php?selectedTheme=dark&pageNumber=1');
-			exit;
-		}		
+		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=1');
+		exit;
 	}
 
 ?>

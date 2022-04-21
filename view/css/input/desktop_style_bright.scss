@@ -134,6 +134,11 @@ html
 	{
 		@extend %mainDesktop;
 
+		section#legalMentions
+		{
+			color: $colorFontBlack;
+		}
+
 		section#sectionAdmin_ManageUsers
 		{
 			color: $colorFontBlack;
@@ -222,6 +227,12 @@ html
 		{
 			color: black;
 			@extend %desktop_publish_step_four;
+
+			div:nth-child(2)
+			{
+				border-left: solid black 2px;
+				border-right: solid black 2px;
+			}
 		}
 	}
 

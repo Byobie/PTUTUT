@@ -4,7 +4,7 @@
 
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
-		unset($_SESSION["access"]);
+		$_SESSION["access"] = false;
 
 		$_SESSION["accessConstructor"] = true;
 

@@ -8,6 +8,8 @@
 
 	if(isset($_SESSION["access"]) && $_SESSION["access"] === true)
 	{
+		$_SESSION["access"] = false;
+
 		$database = new makeDatabase("99percents", "localhost", "utf8", 3308, "root", "");
 		$connexionVerify = new connexionVerify($database->getDatabase());
 		$result = $connexionVerify->checkConnexion($_SESSION["password"], $_SESSION["login"]);
@@ -23,10 +25,7 @@
 			if(isset($_SESSION["publishShortcut"]) && $_SESSION["publishShortcut"] === true)
 			{
 				$_SESSION["connexionStatut"] = true;
-				unset($_SESSION["connexionError"]);		
-
-				$_SESSION["access"] = false;
-				unset($_SESSION["access"]);				
+				unset($_SESSION["connexionError"]);					
 
 				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=4');
 				exit;
@@ -37,9 +36,6 @@
 				$_SESSION["connexionStatut"] = true;
 				unset($_SESSION["connexionError"]);
 
-				$_SESSION["access"] = false;
-				unset($_SESSION["access"]);
-
 				header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=0');
 				exit;
 			}
@@ -49,28 +45,14 @@
 			//THE SESSION VARIABLE RETURN THE RIGHT ERROR MESSAGE. THE USER IS REDIRECTED TO THE REGISTER FORM.
 			$_SESSION["connexionError"] = $result;
 
-			$_SESSION["access"] = false;
-			unset($_SESSION["access"]);
-
 			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
 			exit;
 		}
 	}
 	else
 	{
-		$_SESSION["access"] = false;
-		unset($_SESSION["access"]);
-
-		if(isset($_GET["selectedTheme"]))
-		{
-			header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
-			exit;
-		}
-		else
-		{
-			header('Location: ../../index.php?selectedTheme=dark&pageNumber=3');
-			exit;
-		}			
+		header('Location: ../../index.php?selectedTheme='.$_GET["selectedTheme"].'&pageNumber=3');
+		exit;		
 	}
 	
 ?>

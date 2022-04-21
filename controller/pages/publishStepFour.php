@@ -10,6 +10,7 @@
 
 		$_SESSION["publishColor"] = true;
 		$_SESSION["pagePosition"] = "PUBLISH STEP 4/4";
+		$_SESSION["pageDescription"] = "Choose your sources !";
 
 		$_SESSION["publishForm"] = true;
 		$template = "publishStepFour.html.twig";
